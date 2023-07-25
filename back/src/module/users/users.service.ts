@@ -6,6 +6,7 @@ import {
   Patch,
   Post,
 } from "@nestjs/common";
+
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { UsersRepository } from "./repositories/users.repository";
@@ -28,6 +29,16 @@ export class UsersService {
   async findOne(id: string) {
     const findUser = await this.usersRepository.findOne(id);
     if (!findUser) throw new NotFoundException("User not Found!");
+
+    return findUser;
+  }
+
+  @Get()
+  findOneByEmail(email: string) {
+    const findUser = this.usersRepository.findOneByEmail(email);
+    if (!findUser) {
+      throw new NotFoundException("User not Found!");
+    }
 
     return findUser;
   }
