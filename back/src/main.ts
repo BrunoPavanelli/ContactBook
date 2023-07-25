@@ -4,7 +4,6 @@ import { ValidationPipe } from "@nestjs/common";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(3001);
 
   app.useGlobalPipes(
     new ValidationPipe({ whitelist: true }),
@@ -13,5 +12,7 @@ async function bootstrap() {
       transformOptions: { groups: ["transform"] },
     }),
   );
+
+  await app.listen(3001);
 }
 bootstrap();
