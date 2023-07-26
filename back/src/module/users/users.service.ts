@@ -1,4 +1,5 @@
 import {
+  ConflictException,
   Delete,
   Get,
   Injectable,
@@ -17,6 +18,11 @@ export class UsersService {
 
   @Post()
   async create(createUserDto: CreateUserDto) {
+    const checkEmail = await this.usersRepository.findOneByEmail(
+      createUserDto.email,
+    );
+    if (checkEmail) throw new ConflictException("Email already in use");
+
     return await this.usersRepository.create(createUserDto);
   }
 
