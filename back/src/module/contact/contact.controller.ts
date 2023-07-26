@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  ParseUUIDPipe,
 } from "@nestjs/common";
 import { ContactService } from "./contact.service";
 import { CreateContactDto } from "./dto/create-contact.dto";
@@ -26,17 +27,20 @@ export class ContactController {
   }
 
   @Get(":id")
-  findOne(@Param("id") id: string) {
+  findOne(@Param("id", ParseUUIDPipe) id: string) {
     return this.contactService.findOne(+id);
   }
 
   @Patch(":id")
-  update(@Param("id") id: string, @Body() updateContactDto: UpdateContactDto) {
+  update(
+    @Param("id", ParseUUIDPipe) id: string,
+    @Body() updateContactDto: UpdateContactDto,
+  ) {
     return this.contactService.update(+id, updateContactDto);
   }
 
   @Delete(":id")
-  remove(@Param("id") id: string) {
+  remove(@Param("id", ParseUUIDPipe) id: string) {
     return this.contactService.remove(+id);
   }
 }
