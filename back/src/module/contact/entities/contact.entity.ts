@@ -1,8 +1,9 @@
 import { randomUUID } from "node:crypto";
 
-export class Numbers {
+export class PhoneNumbers {
   readonly id: string;
   number: string;
+  contact: Contact;
 
   constructor() {
     this.id = randomUUID();
@@ -12,6 +13,7 @@ export class Numbers {
 export class Email {
   readonly id: string;
   email: string;
+  contact: Contact;
 
   constructor() {
     this.id = randomUUID();
@@ -21,8 +23,8 @@ export class Email {
 export class Contact {
   readonly id: string;
   name: string;
-  numbers: string[];
-  emails: string[];
+  numbers: PhoneNumbers[];
+  emails: Email[];
 
   constructor() {
     this.id = randomUUID();
