@@ -32,9 +32,11 @@ model Contact {
 model PhoneNumber {
   id       String @id
   contacts Contact[]
+  @@map("phoneNumbers")
 }
 
 model Email {
   id       String @id
   contacts Contact[]
+  @@map("emails")
 }
