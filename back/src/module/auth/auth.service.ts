@@ -4,12 +4,6 @@ import { compareSync } from "bcryptjs";
 
 import { UsersService } from "../users/users.service";
 
-interface User {
-  userId: string;
-  email: string;
-  password: string;
-}
-
 @Injectable()
 export class AuthService {
   constructor(
@@ -26,8 +20,9 @@ export class AuthService {
     return null;
   }
 
-  async login(user: User) {
-    const payload = { email: user.email, sub: user.userId };
+  async login(email: string) {
+    const user = await this.usersService.findOneByEmail(email);
+    const payload = { email: user.email, sub: user.id };
     return {
       token: this.jwtService.sign(payload),
     };
