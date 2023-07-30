@@ -22,7 +22,7 @@ export class UsersPrimasRepository implements UsersRepository {
   }
 
   async findAll(): Promise<User[]> {
-    const users: User[] = await this.prisma.user.findMany();
+    const users = await this.prisma.user.findMany();
     return plainToInstance(User, users);
   }
 

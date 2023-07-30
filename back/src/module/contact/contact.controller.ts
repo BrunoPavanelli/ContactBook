@@ -3,34 +3,42 @@ import {
   Get,
   Post,
   Body,
+  Request,
   Patch,
   Param,
   Delete,
   ParseUUIDPipe,
+  UseGuards,
 } from "@nestjs/common";
 import { ContactService } from "./contact.service";
 import { CreateContactDto } from "./dto/create-contact.dto";
 import { UpdateContactDto } from "./dto/update-contact.dto";
+import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 
 @Controller("contact")
 export class ContactController {
   constructor(private readonly contactService: ContactService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post()
-  create(@Body() createContactDto: CreateContactDto) {
-    return this.contactService.create(createContactDto);
+  async create(@Body() createContactDto: CreateContactDto, @Request() req) {
+    const userId = req.user.id;
+    return this.contactService.create(createContactDto, userId);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   findAll() {
     return this.contactService.findAll();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get(":id")
   findOne(@Param("id", ParseUUIDPipe) id: string) {
     return this.contactService.findOne(+id);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Patch(":id")
   update(
     @Param("id", ParseUUIDPipe) id: string,
@@ -39,6 +47,7 @@ export class ContactController {
     return this.contactService.update(+id, updateContactDto);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete(":id")
   remove(@Param("id", ParseUUIDPipe) id: string) {
     return this.contactService.remove(+id);

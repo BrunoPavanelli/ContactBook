@@ -14,7 +14,7 @@ class CreatePhoneNumberDto {
   @MinLength(11)
   @MaxLength(13)
   @Matches(/^[0-9]/)
-  phoneNumber: number;
+  phoneNumber: string;
 }
 
 class CreateEmailDto {
@@ -32,9 +32,9 @@ export class CreateContactDto {
 
   @IsArray()
   @IsNotEmpty()
-  phoneNumbers: CreatePhoneNumberDto;
+  phoneNumbers: CreatePhoneNumberDto[];
 
   @IsArray()
   @IsNotEmpty()
-  emails: CreateEmailDto;
+  emails: CreateEmailDto[];
 }
