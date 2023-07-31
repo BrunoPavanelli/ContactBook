@@ -34,7 +34,7 @@ model Contact {
 model PhoneNumber {
   id          String  @id
   phoneNumber String
-  contact     Contact @relation(fields: [contactId], references: [id])
+  contact     Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)
   contactId   String
 
   @@map("phone_numbers")
@@ -43,7 +43,7 @@ model PhoneNumber {
 model Email {
   id        String  @id
   email     String
-  contact   Contact @relation(fields: [contactId], references: [id])
+  contact   Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)
   contactId String
 
   @@map("emails")

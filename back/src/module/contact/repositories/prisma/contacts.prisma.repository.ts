@@ -117,7 +117,7 @@ export class ContactsPrismaRepository implements ConstactsRepository {
     return contacts;
   }
 
-  private async findOne(id: string) {
+  async findOne(id: string): Promise<Contact | null | undefined> {
     const findContact = await this.prisma.contact.findFirst({
       where: {
         id,
@@ -163,7 +163,9 @@ export class ContactsPrismaRepository implements ConstactsRepository {
 
     return await this.findOne(contactId);
   }
-  async delete(id: string): Promise<void> {
-    throw new Error("Method not implemented.");
+  async remove(id: string): Promise<void> {
+    await this.prisma.contact.delete({
+      where: { id },
+    });
   }
 }

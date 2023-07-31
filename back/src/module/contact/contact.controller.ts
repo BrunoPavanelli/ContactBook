@@ -70,6 +70,6 @@ export class ContactController {
   @UseGuards(JwtAuthGuard)
   @Delete(":id")
   remove(@Param("id", ParseUUIDPipe) id: string) {
-    return this.contactService.remove(+id);
+    return this.contactService.remove(id);
   }
 }

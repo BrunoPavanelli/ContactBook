@@ -9,6 +9,7 @@ export abstract class ConstactsRepository {
   abstract create(data: CreateContactDto, userId: string): Promise<Contact>;
   abstract findAll(): Promise<Contact[]>;
   abstract findAllByUser(userId: string): Promise<Contact[] | null | undefined>;
+  abstract findOne(id: string): Promise<Contact | null | undefined>;
   abstract updatePhoneNumber(
     contactId: string,
     phoneNumberId: string,
@@ -19,5 +20,5 @@ export abstract class ConstactsRepository {
     emailId: string,
     data: UpdateEmailDto,
   ): Promise<Contact>;
-  abstract delete(id: string): Promise<void>;
+  abstract remove(id: string): Promise<void>;
 }

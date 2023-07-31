@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { CreateContactDto } from "./dto/create-contact.dto";
 import { UpdatePhoneNumberDto, UpdateEmailDto } from "./dto/update-contact.dto";
 import { ConstactsRepository } from "./repositories/contacts.repository";
@@ -43,7 +43,10 @@ export class ContactService {
     );
   }
 
-  async remove(id: number) {
-    return `This action removes a #${id} contact`;
+  async remove(id: string) {
+    const findContact = await this.contactsRepository.findOne(id);
+
+    if (!findContact) throw new NotFoundException("Contact not Found!");
+    return await this.contactsRepository.remove(id);
   }
 }
