@@ -188,14 +188,21 @@ export class ContactsPrismaRepository implements ConstactsRepository {
     });
   }
 
-  async removeAllPhoneNumbersAndEmails(id: string): Promise<void> {
+  async removeAllPhoneNumbers(id: string): Promise<void> {
     await this.prisma.phoneNumber.deleteMany({
       where: { contactId: id },
     });
+  }
 
+  async removeAllEmails(id: string): Promise<void> {
     await this.prisma.email.deleteMany({
       where: { contactId: id },
     });
+  }
+
+  async removeAllPhoneNumbersAndEmails(id: string): Promise<void> {
+    await this.removeAllPhoneNumbers(id);
+    await this.removeAllEmails(id);
   }
 
   async removePhoneNumber(phoneNumberId: string): Promise<void> {

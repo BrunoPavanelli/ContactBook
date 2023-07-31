@@ -27,6 +27,8 @@ export abstract class ConstactsRepository {
   ): Promise<Contact>;
   abstract remove(id: string): Promise<void>;
   abstract removeAllPhoneNumbersAndEmails(id: string): Promise<void>;
+  abstract removeAllPhoneNumbers(id: string): Promise<void>;
+  abstract removeAllEmails(id: string): Promise<void>;
   abstract removePhoneNumber(phoneNumberId: string): Promise<void>;
   abstract removeEmail(emailId: string): Promise<void>;
 }

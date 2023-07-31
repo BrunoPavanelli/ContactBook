@@ -50,6 +50,20 @@ export class ContactService {
     return await this.contactsRepository.remove(id);
   }
 
+  async removeAllPhoneNumbers(id: string) {
+    const findContact = await this.contactsRepository.findOne(id);
+
+    if (!findContact) throw new NotFoundException("Contact not Found!");
+    return await this.contactsRepository.removeAllPhoneNumbers(id);
+  }
+
+  async removeAllEmails(id: string) {
+    const findContact = await this.contactsRepository.findOne(id);
+
+    if (!findContact) throw new NotFoundException("Contact not Found!");
+    return await this.contactsRepository.removeAllEmails(id);
+  }
+
   async removeAllPhoneNumbersAndEmails(id: string) {
     const findContact = await this.contactsRepository.findOne(id);
 
