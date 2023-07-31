@@ -8,7 +8,7 @@ import {
   Matches,
 } from "class-validator";
 
-class CreatePhoneNumberDto {
+export class CreatePhoneNumberDto {
   @IsString()
   @IsNotEmpty()
   @MinLength(11)
@@ -17,7 +17,7 @@ class CreatePhoneNumberDto {
   phoneNumber: string;
 }
 
-class CreateEmailDto {
+export class CreateEmailDto {
   @IsNotEmpty()
   @IsEmail()
   email: string;

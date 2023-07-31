@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { CreateContactDto } from "./dto/create-contact.dto";
-import { UpdateContactDto } from "./dto/update-contact.dto";
+import { UpdatePhoneNumberDto, UpdateEmailDto } from "./dto/update-contact.dto";
 import { ConstactsRepository } from "./repositories/contacts.repository";
 
 @Injectable()
@@ -19,8 +19,28 @@ export class ContactService {
     return await this.contactsRepository.findAllByUser(userId);
   }
 
-  async update(id: number, updateContactDto: UpdateContactDto) {
-    return `This action updates a #${id} contact`;
+  async updatePhoneNumber(
+    contactId: string,
+    phoneNumberIdId: string,
+    updatePhoneNumberDto: UpdatePhoneNumberDto,
+  ) {
+    return await this.contactsRepository.updatePhoneNumber(
+      contactId,
+      phoneNumberIdId,
+      updatePhoneNumberDto,
+    );
+  }
+
+  async updateEmail(
+    contactId: string,
+    emailId: string,
+    updateEmailDto: UpdateEmailDto,
+  ) {
+    return await this.contactsRepository.updateEmail(
+      contactId,
+      emailId,
+      updateEmailDto,
+    );
   }
 
   async remove(id: number) {

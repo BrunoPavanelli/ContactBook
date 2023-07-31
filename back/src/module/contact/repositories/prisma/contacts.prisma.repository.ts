@@ -1,7 +1,10 @@
 import { Injectable } from "@nestjs/common";
 import { ConstactsRepository } from "../contacts.repository";
 import { CreateContactDto } from "../../dto/create-contact.dto";
-import { UpdateContactDto } from "../../dto/update-contact.dto";
+import {
+  UpdateEmailDto,
+  UpdatePhoneNumberDto,
+} from "../../dto/update-contact.dto";
 import { Contact, Email, PhoneNumber } from "../../entities/contact.entity";
 import { PrismaService } from "src/database/prisma.service";
 
@@ -53,11 +56,13 @@ export class ContactsPrismaRepository implements ConstactsRepository {
       include: {
         phoneNumbers: {
           select: {
+            id: true,
             phoneNumber: true,
           },
         },
         emails: {
           select: {
+            id: true,
             email: true,
           },
         },
@@ -72,11 +77,13 @@ export class ContactsPrismaRepository implements ConstactsRepository {
       include: {
         phoneNumbers: {
           select: {
+            id: true,
             phoneNumber: true,
           },
         },
         emails: {
           select: {
+            id: true,
             email: true,
           },
         },
@@ -94,6 +101,30 @@ export class ContactsPrismaRepository implements ConstactsRepository {
       include: {
         phoneNumbers: {
           select: {
+            id: true,
+            phoneNumber: true,
+          },
+        },
+        emails: {
+          select: {
+            id: true,
+            email: true,
+          },
+        },
+      },
+    });
+
+    return contacts;
+  }
+
+  private async findOne(id: string) {
+    const findContact = await this.prisma.contact.findFirst({
+      where: {
+        id,
+      },
+      include: {
+        phoneNumbers: {
+          select: {
             phoneNumber: true,
           },
         },
@@ -105,14 +136,34 @@ export class ContactsPrismaRepository implements ConstactsRepository {
       },
     });
 
-    return contacts;
+    return findContact;
   }
 
-  update(id: string, data: UpdateContactDto): Promise<Contact> {
-    throw new Error("Method not implemented.");
-  }
+  async updatePhoneNumber(
+    contactId: string,
+    phoneNumberId: string,
+    data: UpdatePhoneNumberDto,
+  ): Promise<Contact> {
+    await this.prisma.phoneNumber.update({
+      where: { id: phoneNumberId },
+      data: { ...data },
+    });
 
-  delete(id: string): Promise<void> {
+    return await this.findOne(contactId);
+  }
+  async updateEmail(
+    contactId: string,
+    emailId: string,
+    data: UpdateEmailDto,
+  ): Promise<Contact> {
+    await this.prisma.email.update({
+      where: { id: emailId },
+      data: { ...data },
+    });
+
+    return await this.findOne(contactId);
+  }
+  async delete(id: string): Promise<void> {
     throw new Error("Method not implemented.");
   }
 }
