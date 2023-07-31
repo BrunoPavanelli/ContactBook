@@ -33,9 +33,10 @@ export class ContactController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get(":id")
-  findOne(@Param("id", ParseUUIDPipe) id: string) {
-    return this.contactService.findOne(+id);
+  @Get("/token")
+  findAllByUser(@Request() req) {
+    const userId = req.user.id;
+    return this.contactService.findAllByUser(userId);
   }
 
   @UseGuards(JwtAuthGuard)

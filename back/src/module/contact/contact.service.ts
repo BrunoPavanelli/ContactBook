@@ -15,15 +15,15 @@ export class ContactService {
     return await this.contactsRepository.findAll();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} contact`;
+  async findAllByUser(userId: string) {
+    return await this.contactsRepository.findAllByUser(userId);
   }
 
-  update(id: number, updateContactDto: UpdateContactDto) {
+  async update(id: number, updateContactDto: UpdateContactDto) {
     return `This action updates a #${id} contact`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} contact`;
   }
 }

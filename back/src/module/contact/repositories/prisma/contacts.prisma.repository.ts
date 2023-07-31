@@ -85,12 +85,33 @@ export class ContactsPrismaRepository implements ConstactsRepository {
 
     return contacts;
   }
-  findAllByUser(userId: string): Promise<Contact[]> {
-    throw new Error("Method not implemented.");
+
+  async findAllByUser(userId: string): Promise<Contact[]> {
+    const contacts = await this.prisma.contact.findMany({
+      where: {
+        userId: userId,
+      },
+      include: {
+        phoneNumbers: {
+          select: {
+            phoneNumber: true,
+          },
+        },
+        emails: {
+          select: {
+            email: true,
+          },
+        },
+      },
+    });
+
+    return contacts;
   }
+
   update(id: string, data: UpdateContactDto): Promise<Contact> {
     throw new Error("Method not implemented.");
   }
+
   delete(id: string): Promise<void> {
     throw new Error("Method not implemented.");
   }
