@@ -74,6 +74,12 @@ export class ContactController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Delete("/drainout/:id")
+  removeAllPhoneNumbersAndEmails(@Param("id", ParseUUIDPipe) id: string) {
+    return this.contactService.removeAllPhoneNumbersAndEmails(id);
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Delete("/phone/delete/:phoneNumberId/")
   removePhoneNumber(
     @Param("phoneNumberId", ParseUUIDPipe) phoneNumberId: string,
