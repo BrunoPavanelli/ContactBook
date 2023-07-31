@@ -49,4 +49,20 @@ export class ContactService {
     if (!findContact) throw new NotFoundException("Contact not Found!");
     return await this.contactsRepository.remove(id);
   }
+
+  async removePhoneNumber(phoneNumberId: string) {
+    const findContact = await this.contactsRepository.findOnePhoneNumber(
+      phoneNumberId,
+    );
+
+    if (!findContact) throw new NotFoundException("Contact not Found!");
+    return await this.contactsRepository.removePhoneNumber(phoneNumberId);
+  }
+
+  async removeEmail(emailId: string) {
+    const findContact = await this.contactsRepository.findOneEmail(emailId);
+
+    if (!findContact) throw new NotFoundException("Contact not Found!");
+    return await this.contactsRepository.removeEmail(emailId);
+  }
 }

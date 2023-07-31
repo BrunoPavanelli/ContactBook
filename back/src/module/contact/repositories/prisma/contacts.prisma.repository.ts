@@ -139,6 +139,24 @@ export class ContactsPrismaRepository implements ConstactsRepository {
     return findContact;
   }
 
+  async findOnePhoneNumber(
+    phoneNumberId: string,
+  ): Promise<PhoneNumber | null | undefined> {
+    const findPhoneNumber = await this.prisma.phoneNumber.findFirst({
+      where: { id: phoneNumberId },
+    });
+
+    return findPhoneNumber;
+  }
+
+  async findOneEmail(emailId: string): Promise<Email | null | undefined> {
+    const findEmail = await this.prisma.email.findFirst({
+      where: { id: emailId },
+    });
+
+    return findEmail;
+  }
+
   async updatePhoneNumber(
     contactId: string,
     phoneNumberId: string,
@@ -163,9 +181,22 @@ export class ContactsPrismaRepository implements ConstactsRepository {
 
     return await this.findOne(contactId);
   }
+
   async remove(id: string): Promise<void> {
     await this.prisma.contact.delete({
       where: { id },
+    });
+  }
+
+  async removePhoneNumber(phoneNumberId: string): Promise<void> {
+    await this.prisma.phoneNumber.delete({
+      where: { id: phoneNumberId },
+    });
+  }
+
+  async removeEmail(emailId: string): Promise<void> {
+    await this.prisma.email.delete({
+      where: { id: emailId },
     });
   }
 }

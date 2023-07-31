@@ -72,4 +72,18 @@ export class ContactController {
   remove(@Param("id", ParseUUIDPipe) id: string) {
     return this.contactService.remove(id);
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete("/phone/delete/:phoneNumberId/")
+  removePhoneNumber(
+    @Param("phoneNumberId", ParseUUIDPipe) phoneNumberId: string,
+  ) {
+    return this.contactService.removePhoneNumber(phoneNumberId);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete("/email/delete/:emailId/")
+  removeEmail(@Param("emailId", ParseUUIDPipe) emailId: string) {
+    return this.contactService.removeEmail(emailId);
+  }
 }

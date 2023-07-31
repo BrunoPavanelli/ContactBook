@@ -1,3 +1,4 @@
+import { Email, PhoneNumber } from "@prisma/client";
 import { CreateContactDto } from "../dto/create-contact.dto";
 import {
   UpdatePhoneNumberDto,
@@ -10,6 +11,10 @@ export abstract class ConstactsRepository {
   abstract findAll(): Promise<Contact[]>;
   abstract findAllByUser(userId: string): Promise<Contact[] | null | undefined>;
   abstract findOne(id: string): Promise<Contact | null | undefined>;
+  abstract findOnePhoneNumber(
+    phoneNumberId: string,
+  ): Promise<PhoneNumber | null | undefined>;
+  abstract findOneEmail(emailId: string): Promise<Email | null | undefined>;
   abstract updatePhoneNumber(
     contactId: string,
     phoneNumberId: string,
@@ -21,4 +26,6 @@ export abstract class ConstactsRepository {
     data: UpdateEmailDto,
   ): Promise<Contact>;
   abstract remove(id: string): Promise<void>;
+  abstract removePhoneNumber(phoneNumberId: string): Promise<void>;
+  abstract removeEmail(emailId: string): Promise<void>;
 }
