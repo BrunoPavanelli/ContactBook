@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export const Reset = createGlobalStyle`
-    html, body, main, dialog, figure, img, div, section, article, input, select, button, textarea, p, h1, h2, h3, h4, h5, h6, ul, li, a{
+    html, body, main, dialog, figure, img, div, section, article, input, select, button, textarea, p, h1, h2, h3, h4, h5, h6, ul, li, a, form {
         margin: 0;
         padding: 0;
 
@@ -13,6 +13,8 @@ export const Reset = createGlobalStyle`
         
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
+
+        font-family: var(--ff-Kanit);
 
         button {
             cursor: pointer;
@@ -28,12 +30,17 @@ export const GlobalStyle = createGlobalStyle`
         --black: #2D3338;
         --black-2: #353B40;
         --black-3: #3B4148;
+        --purple-primary: #01022F;
         --primary-orange: rgba(185, 96, 37, 0.918);
-        --primary-yellow: rgb(233, 238, 204);
+        --primary-yellow: #F5D2BB;
+        --primary-pink: #B08BAC;
+        --primary-yellow-opacity: rgb(233, 238, 204, 0.6);
         --error-form: rgba(	252, 3, 93, 0.8);
 
         /* Font-Family */
-
+        --ff-Kanit: 'Kanit', sans-serif;
+        --ff-Pacifo: 'Pacifico', cursive;
+        --ff-Sulphur: 'Sulphur Point', sans-serif;
 
         /* Font-Size */
         --fs-50: 3.125rem;
@@ -94,6 +101,10 @@ export const GlobalStyle = createGlobalStyle`
 
     /* Texts */
     /* Fonts */
+     .ff__sulphur {
+        font-family: var(--ff-Sulphur);
+     }
+
     .fw__400 {
         font-weight: var(--fw-400);
     }
@@ -145,6 +156,18 @@ export const GlobalStyle = createGlobalStyle`
     /* Colors */
     .yellow__text {
         color: var(--primary-yellow);
+    }
+
+    .yellow__text--opacity {
+        color: var(--primary-yellow-opacity);
+    }
+
+    .purple__text {
+        color: var(--purple-primary);
+    }
+
+    .pink__text {
+        color: var(--primary-pink);
     }
 
     .black__text0 {

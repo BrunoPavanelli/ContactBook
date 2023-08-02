@@ -7,7 +7,7 @@ export const HeaderStyled = styled.header`
     justify-content: center;
     align-items: center;
 
-    background-color: var(--primary-orange);
+    background-color: var(--purple-primary);
 `;
 
 export const HeaderDivStyled = styled.header`
