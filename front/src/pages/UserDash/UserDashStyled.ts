@@ -11,7 +11,7 @@ export const UserDashStyled = styled.div`
         margin-inline: auto;
         margin-top: 1rem;
 
-        border: 2px solid var(--purple-primary);
+        /* border: 2px solid var(--purple-primary); */
 
         .operation__bar {
             width: 100%;
@@ -37,6 +37,19 @@ export const UserDashStyled = styled.div`
                 background-color: var(--purple-primary);
                 border-radius: var(--br-8);
             }
+        }
+
+        ul {
+            width: 100%;
+            height: max-content;
+            min-height: 300px;
+
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+
+            padding: 0.5rem;
         }
     }
 `;

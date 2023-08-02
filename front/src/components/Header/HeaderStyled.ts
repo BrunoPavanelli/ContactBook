@@ -21,6 +21,7 @@ export const HeaderDivStyled = styled.header`
         width: max-content;
 
         display: flex;
+        align-items: center;
         gap: 1rem;
     }
 

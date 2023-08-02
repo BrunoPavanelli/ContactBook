@@ -1,13 +1,15 @@
 import { BsTelephonePlusFill } from "react-icons/bs";
+import { BiLogOutCircle } from "react-icons/bi";
 import { AiFillEdit } from "react-icons/ai";
 
 import { Header } from "../../components/Header/Header";
 import { UserDashStyled } from "./UserDashStyled";
+import { ContactCard } from "../../components/ContactCard/ContactCard";
 
 export const UserDash = () => {
     return (
         <UserDashStyled>
-            <Header/>
+            <Header children={<BiLogOutCircle className="yellow__text" size={35}/>}/>
             <main className="container__page">
                 <div className="operation__bar">
                     <div className="operation__div">
@@ -19,6 +21,21 @@ export const UserDash = () => {
                         <p className="yellow__text">Edit personal infos</p>
                     </div>
                 </div>
+                <ul>
+                    <ContactCard/>
+                    <ContactCard/>
+                    <ContactCard/>
+                    <ContactCard/>
+                    <ContactCard/>
+                    <ContactCard/>
+                    <ContactCard/>
+                    <ContactCard/>
+                    <ContactCard/>
+                    <ContactCard/>
+                    <ContactCard/>
+                    <ContactCard/>
+                    
+                </ul>
             </main>
             
         </UserDashStyled>
