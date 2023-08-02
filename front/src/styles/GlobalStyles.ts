@@ -31,6 +31,7 @@ export const GlobalStyle = createGlobalStyle`
         --black-2: #353B40;
         --black-3: #3B4148;
         --purple-primary: #01022F;
+        --purple-primary-opacity: rgba(1,2,47,0.3);
         --primary-orange: rgba(185, 96, 37, 0.918);
         --primary-yellow: #F5D2BB;
         --primary-pink: #B08BAC;
