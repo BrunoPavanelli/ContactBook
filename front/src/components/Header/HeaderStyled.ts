@@ -3,11 +3,11 @@ import { styled } from "styled-components";
 export const HeaderStyled = styled.header`
     height: 125px;
 
-    border-bottom: 2px solid black;
-
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background-color: var(--primary-orange);
 `;
 
 export const HeaderDivStyled = styled.header`

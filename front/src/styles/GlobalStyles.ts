@@ -143,8 +143,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     /* Colors */
-    .white__text {
-        color: var(--white);
+    .yellow__text {
+        color: var(--primary-yellow);
     }
 
     .black__text0 {
