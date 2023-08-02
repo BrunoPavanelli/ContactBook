@@ -16,13 +16,9 @@ export const LoginRegisterFormStyled = styled.div`
         width: 100%;
         height: 40%;
 
-        padding: 1rem;
-
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
-
 
         .texts {
             display: flex;
@@ -33,10 +29,11 @@ export const LoginRegisterFormStyled = styled.div`
     }
 
     form {
+
         width: 100%;
         height: 60%;
 
-        padding: 1rem;
+        padding-inline: 1rem;
 
         display: flex;
         flex-direction: column;
