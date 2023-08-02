@@ -14,8 +14,6 @@ export const Reset = createGlobalStyle`
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
 
-        font-family: var(--ff-Kanit);
-
         button {
             cursor: pointer;
         }
@@ -30,17 +28,12 @@ export const GlobalStyle = createGlobalStyle`
         --black: #2D3338;
         --black-2: #353B40;
         --black-3: #3B4148;
-        --primary-blue: #6069F0;
-        --primary-white-blue: #74E5DA;
-        --primary-white-blue-opacity: rgba(116,229,218,0.8);
-        --secondary-white-blue: #BDF8EF;
+        --primary-orange: rgba(185, 96, 37, 0.918);
+        --primary-yellow: rgb(233, 238, 204);
         --error-form: rgba(	252, 3, 93, 0.8);
 
         /* Font-Family */
-        /* --ff-Oswald: 'Oswald', sans-serif;
-        --ff-Inter: 'Inter', sans-serif; */
-        --ff-Kanit: 'Kanit', sans-serif;
-        --ff-Pacifico: 'Pacifico', cursive;
+
 
         /* Font-Size */
         --fs-50: 3.125rem;
@@ -101,10 +94,6 @@ export const GlobalStyle = createGlobalStyle`
 
     /* Texts */
     /* Fonts */
-    .ff__kanit {
-        font-family: var(--ff-Kanit);
-    }
-
     .fw__400 {
         font-weight: var(--fw-400);
     }
