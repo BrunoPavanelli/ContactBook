@@ -1,5 +1,5 @@
 import { AiOutlineLogin } from "react-icons/ai";
-import { FaUser } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 import { HiLockClosed } from "react-icons/hi";
 
 import { LoginRegisterFormStyled } from "../../components/Form/LoginRegisterDiv/LoginRegisterForm/LoginRegisterFormStyled";
@@ -22,7 +22,7 @@ export const Login = () => {
                     </div>
                 </div>
                 <form>
-                    <Input placeholder="Username" type="email" children={<FaUser/>}/>
+                    <Input placeholder="Email" type="email" children={<MdEmail/>}/>
                     <Input placeholder="Password" type="password" children={<HiLockClosed/>}/>
                     <ButtonStyled className="btn">Get Started</ButtonStyled>
 

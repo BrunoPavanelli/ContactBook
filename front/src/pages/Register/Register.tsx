@@ -23,8 +23,8 @@ export const Register = () => {
                     </div>
                 </div>
                 <form>
-                    <Input placeholder="Username" type="text" children={<MdEmail/>}/>
-                    <Input placeholder="Email" type="email" children={<FaUser/>}/>
+                    <Input placeholder="Username" type="text" children={<FaUser/>}/>
+                    <Input placeholder="Email" type="email" children={<MdEmail/>}/>
                     <Input placeholder="Password" type="password" children={<HiLockClosed/>}/>
                     <ButtonStyled className="btn">Register</ButtonStyled>
 
