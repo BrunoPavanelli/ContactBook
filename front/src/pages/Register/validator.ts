@@ -1,4 +1,4 @@
-import { z } from "zod";
+// import { z } from "zod";
 
 // export const registerSchema = z.object({
 //     username: z.string({ required_error: "Username is required!" }).min(7, { message: "Must be 7 or more characters long"}),
