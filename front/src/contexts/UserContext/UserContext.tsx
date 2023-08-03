@@ -19,15 +19,24 @@ export const UserProvider = ({ children }: IChildren) => {
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
 
+    const retrieveUserData = async (id: string, token: string) => {
+        const { data } = await api.get(`/users/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        setUser(data);
+    };
+
     const userLogin = async (loginData: ILoginData) => {
         try {
             const { data } = await api.post("/auth", loginData);
 
             const decodedToken: IDecodedToken = jwt_decode(data.token);
-            console.log(decodedToken);
+            retrieveUserData(decodedToken.id, data.token);
 
-            // localStorage.setItem("@ContactBook:Token", data.token);
-            // navigate("/dashboard");
+            localStorage.setItem("@ContactBook:Token", data.token);
+            navigate("/dashboard");
 
             toast.success("Succes!");
         } catch (err) {
@@ -54,24 +63,10 @@ export const UserProvider = ({ children }: IChildren) => {
         toast.success("Godbye!");
     };
 
-    const retrieveUserData = async () => {
-        const token = localStorage.getItem("@ContactBook:Token");
-        try {
-            const { data } = await api.get("/users/token", {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            setUser(data);
-        } catch (error) {
-            toast.warning("Please, login again :)");
-            console.log(error);
-            userLogout();
-        }
-    };
-
     return (
-        <UserContext.Provider value={{ isOpen, setIsOpen, userLogin }}>
+        <UserContext.Provider
+            value={{ isOpen, setIsOpen, userLogin, userRegister, userLogout }}
+        >
             {children}
         </UserContext.Provider>
     );

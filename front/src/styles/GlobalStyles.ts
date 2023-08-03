@@ -70,7 +70,7 @@ export const GlobalStyle = createGlobalStyle`
         --links-distance-line-to-text: 1.815rem;
         --post-height: 8rem;
 
-        --toastify-color-success: rgba(116,229,218,0.8);
+        --toastify-color-success: #B08BAC;
         --toastify-color-error: rgba(	252, 3, 93, 0.8);
     }
 

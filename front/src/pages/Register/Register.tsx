@@ -13,8 +13,11 @@ import { Input } from "../../components/Form/LoginRegisterDiv/Input/Input";
 import { Link } from "react-router-dom";
 import { IRegisterData } from "../../contexts/UserContext/@userTypes";
 import { registerSchema } from "./validator";
+import { useUserContext } from "../../contexts/UserContext/UserContext";
 
 export const Register = () => {
+    const { userRegister } = useUserContext();
+
     const {
         register,
         handleSubmit,
@@ -24,8 +27,9 @@ export const Register = () => {
     });
 
     const submit: SubmitHandler<IRegisterData> = async (data) => {
-        console.log(data);
+        userRegister(data);
     };
+
     return (
         <RegisterStyled onSubmit={handleSubmit(submit)}>
             <Header />
@@ -44,7 +48,7 @@ export const Register = () => {
                         placeholder="Username"
                         type="text"
                         children={<FaUser />}
-                        register={register("username")}
+                        register={register("name")}
                         errors={errors.username?.message}
                     />
                     <Input

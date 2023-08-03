@@ -3,6 +3,7 @@ import { AppRoutes } from "./routes/Routes";
 import { AppStyled } from "./styles/AppStyled";
 import { Reset, GlobalStyle } from "./styles/GlobalStyles";
 import { UserProvider } from "./contexts/UserContext/UserContext";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
     return (

@@ -2,6 +2,8 @@ export interface IUserContext {
     isOpen: boolean;
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
     userLogin: (loginData: ILoginData) => Promise<void>;
+    userRegister: (registerData: IRegisterData) => Promise<void>;
+    userLogout: () => void;
 }
 
 export interface ILoginData {
@@ -10,7 +12,7 @@ export interface ILoginData {
 }
 
 export interface IRegisterData extends ILoginData {
-    username: string;
+    name: string;
 }
 
 export interface IDecodedToken {
