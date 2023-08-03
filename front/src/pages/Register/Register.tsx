@@ -1,4 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AiOutlineLogin } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
@@ -10,7 +11,6 @@ import { Header } from "../../components/Header/Header";
 import { LoginRegisterFormStyled } from "../../components/Form/LoginRegisterDiv/LoginRegisterForm/LoginRegisterFormStyled";
 import { ButtonStyled } from "../../components/Form/LoginRegisterDiv/Button/ButtonStyled";
 import { Input } from "../../components/Form/LoginRegisterDiv/Input/Input";
-import { Link } from "react-router-dom";
 import { IRegisterData } from "../../contexts/UserContext/@userTypes";
 import { registerSchema } from "./validator";
 import { useUserContext } from "../../contexts/UserContext/UserContext";

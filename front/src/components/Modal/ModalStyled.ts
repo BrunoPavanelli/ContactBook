@@ -23,6 +23,11 @@ export const ModalStyled = styled.div`
 
     position: relative;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     background-color: var(--purple-primary);
     border-radius: 1.25rem;
 
@@ -36,5 +41,46 @@ export const ModalStyled = styled.div`
         top: 1rem;
         
         cursor: pointer;
+    }
+`;
+
+export const EditProfileStyled = styled.div`
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .head {
+        width: 100%;
+        height: 40%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .texts {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    form {
+
+        width: 100%;
+        height: 60%;
+
+        padding-inline: 1rem;
+
+        display: flex;
+        flex-direction: column;
+
+        .btn {
+            margin-top: 1rem;
+        }
     }
 `;

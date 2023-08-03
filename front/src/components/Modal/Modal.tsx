@@ -2,7 +2,8 @@ import { useRef, useEffect } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
 
 import { ModalDivStyled, ModalStyled } from "./ModalStyled";
-import { useUserContext } from "../../contexts/UserContext/userContext";
+import { useUserContext } from "../../contexts/UserContext/UserContext";
+import { EditProfile } from "./EditProfile/EditProfile";
 
 export const Modal = () => {
     const { setIsOpen } = useUserContext();
@@ -34,12 +35,13 @@ export const Modal = () => {
     return (
         <ModalDivStyled role="dialog">
             <ModalStyled ref={modalRef}>
-                <IoIosCloseCircle size={30} ref={buttonRef} className="yellow__text close__btn" onClick={() => setIsOpen(false)}/>
+                <IoIosCloseCircle size={30} ref={buttonRef} className="pink__text close__btn" onClick={() => setIsOpen(false)}/>
                 <button
                     className="hidden__btn"
                     ref={buttonRef}
                     onClick={() => setIsOpen(false)}
                 />
+                <EditProfile/>
             </ModalStyled>
         </ModalDivStyled>
     );
