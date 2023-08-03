@@ -1,7 +1,8 @@
 import { CgDetailsMore } from "react-icons/cg";
 
-import { useUserContext } from "../../contexts/UserContext/userContext";
+
 import { ContactCardStyled } from "./ContactCardStyled";
+import { useUserContext } from "../../contexts/UserContext/UserContext";
 
 
 export const ContactCard = () => {

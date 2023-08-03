@@ -6,15 +6,18 @@ import { Header } from "../../components/Header/Header";
 import { UserDashStyled } from "./UserDashStyled";
 import { ContactCard } from "../../components/ContactCard/ContactCard";
 import { Modal } from "../../components/Modal/Modal";
-import { useUserContext } from "../../contexts/UserContext/userContext";
+import { useUserContext } from "../../contexts/UserContext/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export const UserDash = () => {
     const { isOpen, setIsOpen } = useUserContext();
 
+    const navigate = useNavigate();
+
     return (
         <UserDashStyled>
             {isOpen ? <Modal/> : null}
-            <Header children={<BiLogOutCircle className="yellow__text" size={35}/>}/>
+            <Header children={<BiLogOutCircle className="yellow__text logout__btn" onClick={() => navigate("/")} size={35}/>}/>
             <main className="container__page">
                 <div className="operation__bar">
                     <div className="operation__div" onClick={() => setIsOpen(true)}>

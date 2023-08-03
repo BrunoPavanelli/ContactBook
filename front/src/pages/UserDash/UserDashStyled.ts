@@ -5,6 +5,10 @@ export const UserDashStyled = styled.div`
     max-height: max-content;
     width: 100%;
 
+    .logout__btn {
+        cursor: pointer;
+    }
+
     main {
         height: 80vh;
 
