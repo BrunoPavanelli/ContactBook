@@ -5,7 +5,7 @@ import { PublicRoutes } from "./Outlets/PublicRoutes";
 import { Login } from "../pages/Login/Login";
 import { Register } from "../pages/Register/Register";
 import { UserDash } from "../pages/UserDash/UserDash";
-import { UserProvider } from "../contexts/UserContext/userContext";
+import { UserProvider } from "../contexts/UserContext/UserContext";
 
 export const AppRoutes = () => {
     return (

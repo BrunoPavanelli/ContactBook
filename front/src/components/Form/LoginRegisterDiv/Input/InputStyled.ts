@@ -7,7 +7,6 @@ export const InputDivStyled = styled.div`
     border-bottom: 2px solid var(--primary-pink);
     
     display: flex;
-    position: relative;
 `;
 
 export const InputIconDivStyled = styled.div`

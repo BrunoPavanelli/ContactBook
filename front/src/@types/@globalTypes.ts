@@ -12,6 +12,6 @@ export interface IChildrenOptional {
 export interface IInput extends IChildren {
     placeholder: string;
     type: string;
-    // register: UseFormRegisterReturn<string>;
-    // errors?: string
+    register: UseFormRegisterReturn<string>;
+    errors?: string
 }

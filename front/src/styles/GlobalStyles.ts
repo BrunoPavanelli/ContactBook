@@ -51,6 +51,7 @@ export const GlobalStyle = createGlobalStyle`
         --fs-20: 1.25rem;
         --fs-19: 1.2rem;
         --fs-16: 1rem;
+        --fs-12: 0.75rem;
         --fs-10: .625rem;
 
         /* Font-Weight */
@@ -126,6 +127,10 @@ export const GlobalStyle = createGlobalStyle`
         font-size: var(--fs-10);
     }
 
+    .fs__12 {
+        font-size: var(--fs-12);
+    }
+
     .fs__16 {
         font-size: var(--fs-16);
     }
@@ -187,11 +192,8 @@ export const GlobalStyle = createGlobalStyle`
         color: var(--primary-white-blue-opacity);
     }
 
-    .errors_text {
+    .errors__text {
         color: var(--error-form);
-
-        position: absolute;
-        right: 1rem;
     }
 
     /* Letter Spacing */
