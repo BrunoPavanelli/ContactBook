@@ -9,7 +9,7 @@ export const ContactCard = () => {
 
     return (
         <ContactCardStyled>
-            <div className="more__infos" onClick={(e) => setIsOpen(true)}>
+            <div className="more__infos" onClick={() => setIsOpen(true)}>
                 <CgDetailsMore className="pink__text" size={30} />
                 <p className="pink__text">View all infos</p>
             </div>

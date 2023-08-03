@@ -27,9 +27,6 @@ export const Modal = () => {
 
         return () => {
             window.removeEventListener("keydown", handleKeydown);
-        };
-
-        return () => {
             window.removeEventListener("mousedown", handleOutclick);
         };
     }, []);
@@ -42,9 +39,7 @@ export const Modal = () => {
                     className="hidden__btn"
                     ref={buttonRef}
                     onClick={() => setIsOpen(false)}
-                >
-                    Fechar
-                </button>
+                />
             </ModalStyled>
         </ModalDivStyled>
     );
