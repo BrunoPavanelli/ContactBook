@@ -15,8 +15,6 @@ export const UserDashStyled = styled.div`
         margin-inline: auto;
         margin-top: 1rem;
 
-        /* border: 2px solid var(--purple-primary); */
-
         .operation__bar {
             width: 100%;
             height: 100px;
@@ -45,8 +43,10 @@ export const UserDashStyled = styled.div`
 
         ul {
             width: 100%;
-            height: max-content;
             min-height: 300px;
+            max-height: 650px;
+
+            overflow-y: auto;
 
             display: flex;
             justify-content: space-between;
@@ -55,5 +55,35 @@ export const UserDashStyled = styled.div`
 
             padding: 0.5rem;
         }
+    }
+
+    @media (max-width: 905px) {
+        main {
+            .operation__bar {
+                justify-content: space-between;
+            }
+
+            ul {
+                display: flex;
+                flex-wrap: nowrap;
+                align-items: center;
+                overflow-x: auto;
+                gap: 1rem;
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        main {
+            .operation__bar {
+                justify-content: start;
+                gap: 0.5rem;
+                .operation__div {
+                    p {
+                        display: none;
+                    }
+                }
+            }
+        }        
     }
 `;

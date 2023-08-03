@@ -25,8 +25,17 @@ export const HeaderDivStyled = styled.header`
         gap: 1rem;
     }
 
-    .logout {
-        color: var(--primary-white-blue);
+    .logout__btn {
         cursor: pointer;
+    }
+
+    @media (max-width: 360px) {
+        position: relative;
+        .logout__btn {
+            position: absolute;
+
+            bottom: 0.5rem;
+            align-self: center;
+        }
     }
 `;
