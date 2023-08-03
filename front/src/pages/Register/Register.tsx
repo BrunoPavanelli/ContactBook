@@ -49,7 +49,7 @@ export const Register = () => {
                         type="text"
                         children={<FaUser />}
                         register={register("name")}
-                        errors={errors.username?.message}
+                        errors={errors.name?.message}
                     />
                     <Input
                         placeholder="Email"
