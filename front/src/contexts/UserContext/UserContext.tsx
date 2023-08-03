@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { IChildren } from "../../@types/@globalTypes";
 import { IUserContext } from "./@userTypes";
 
@@ -13,3 +13,5 @@ export const UserProvider = ({ children }: IChildren) => {
         </UserContext.Provider>
     );
 };
+
+export const useUserContext = () => useContext(UserContext);

@@ -1,11 +1,15 @@
-import { ContactCardStyled } from "./ContactCardStyled";
-
 import { CgDetailsMore } from "react-icons/cg";
 
+import { useUserContext } from "../../contexts/UserContext/userContext";
+import { ContactCardStyled } from "./ContactCardStyled";
+
+
 export const ContactCard = () => {
+    const { setIsOpen } = useUserContext();
+
     return (
         <ContactCardStyled>
-            <div className="more__infos">
+            <div className="more__infos" onClick={(e) => setIsOpen(true)}>
                 <CgDetailsMore className="pink__text" size={30} />
                 <p className="pink__text">View all infos</p>
             </div>

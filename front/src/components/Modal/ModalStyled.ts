@@ -19,6 +19,22 @@ export const ModalStyled = styled.div`
 
     margin-top: 10rem;
 
+    padding: 1rem;
+
+    position: relative;
+
     background-color: var(--purple-primary);
     border-radius: 1.25rem;
+
+    .hidden__btn {
+        display: none;
+    }
+
+    .close__btn {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        
+        cursor: pointer;
+    }
 `;
