@@ -2,6 +2,7 @@ import { ToastContainer } from "react-toastify";
 import { AppRoutes } from "./routes/Routes";
 import { AppStyled } from "./styles/AppStyled";
 import { Reset, GlobalStyle } from "./styles/GlobalStyles";
+import { UserProvider } from "./contexts/UserContext/UserContext";
 
 function App() {
     return (
@@ -9,7 +10,9 @@ function App() {
             <Reset />
             <GlobalStyle />
             <AppStyled>
-                <AppRoutes />
+                <UserProvider>
+                    <AppRoutes />
+                </UserProvider>
             </AppStyled>
             <ToastContainer
               position="top-right"

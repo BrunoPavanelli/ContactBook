@@ -12,8 +12,11 @@ import { ButtonStyled } from "../../components/Form/LoginRegisterDiv/Button/Butt
 import { Link } from "react-router-dom";
 import { ILoginData } from "../../contexts/UserContext/@userTypes";
 import { loginSchema } from "./validator";
+import { useUserContext } from "../../contexts/UserContext/UserContext";
 
 export const Login = () => {
+    const { userLogin } = useUserContext();
+
     const {
         register,
         handleSubmit,
@@ -21,7 +24,7 @@ export const Login = () => {
     } = useForm<ILoginData>({ resolver: zodResolver(loginSchema) });
 
     const submit: SubmitHandler<ILoginData> = async (data) => {
-        console.log(data);
+        userLogin(data);
     };
 
     return (
