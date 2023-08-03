@@ -16,6 +16,7 @@ export const UserContext = createContext<IUserContext>({} as IUserContext);
 
 export const UserProvider = ({ children }: IChildren) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [modalType, setModalType] = useState("");
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
 
@@ -65,7 +66,15 @@ export const UserProvider = ({ children }: IChildren) => {
 
     return (
         <UserContext.Provider
-            value={{ isOpen, setIsOpen, userLogin, userRegister, userLogout }}
+            value={{
+                isOpen,
+                setIsOpen,
+                modalType,
+                setModalType,
+                userLogin,
+                userRegister,
+                userLogout,
+            }}
         >
             {children}
         </UserContext.Provider>

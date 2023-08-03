@@ -34,7 +34,7 @@ export const EditProfile = () => {
                 <div className="texts">
                     <h1 className="yellow__text">Profile</h1>
                     <p className="yellow__text fs__10">
-                        Enter your informatiosn down bellow to edit.
+                        Enter your informations down bellow to edit.
                     </p>
                 </div>
             </div>

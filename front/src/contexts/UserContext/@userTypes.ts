@@ -1,6 +1,8 @@
 export interface IUserContext {
     isOpen: boolean;
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    modalType: string;
+    setModalType: React.Dispatch<React.SetStateAction<string>>
     userLogin: (loginData: ILoginData) => Promise<void>;
     userRegister: (registerData: IRegisterData) => Promise<void>;
     userLogout: () => void;

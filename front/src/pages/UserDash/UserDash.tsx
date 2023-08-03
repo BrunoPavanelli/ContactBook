@@ -9,7 +9,7 @@ import { Modal } from "../../components/Modal/Modal";
 import { useUserContext } from "../../contexts/UserContext/UserContext";
 
 export const UserDash = () => {
-    const { isOpen, setIsOpen, userLogout } = useUserContext();
+    const { isOpen, setIsOpen, setModalType, userLogout } = useUserContext();
 
     return (
         <UserDashStyled>
@@ -17,11 +17,11 @@ export const UserDash = () => {
             <Header children={<BiLogOutCircle className="yellow__text logout__btn" onClick={() => userLogout()} size={35}/>}/>
             <main className="container__page">
                 <div className="operation__bar">
-                    <div className="operation__div" onClick={() => setIsOpen(true)}>
+                    <div className="operation__div" onClick={() => {setIsOpen(true); setModalType("newcontact");}}>
                         <BsTelephonePlusFill className="yellow__text" size={15}/>
                         <p className="yellow__text">New contact</p>
                     </div>
-                    <div className="operation__div" onClick={() => setIsOpen(true)}>
+                    <div className="operation__div" onClick={() => {setIsOpen(true); setModalType("editprofile");}}>
                         <AiFillEdit className="yellow__text" size={15}/>
                         <p className="yellow__text">Edit personal infos</p>
                     </div>

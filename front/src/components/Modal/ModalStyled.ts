@@ -48,6 +48,8 @@ export const EditProfileStyled = styled.div`
     width: 100%;
     height: 100%;
 
+    padding-block: 1rem;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -70,17 +72,36 @@ export const EditProfileStyled = styled.div`
     }
 
     form {
-
         width: 100%;
         height: 60%;
+
+        overflow-y: auto;
 
         padding-inline: 1rem;
 
         display: flex;
         flex-direction: column;
 
+        position: relative;
+
         .btn {
             margin-top: 1rem;
+        }
+
+        .plus__btn--1 {
+            position: absolute;
+            right: 1rem;
+            bottom: 14.25rem;
+
+            cursor: pointer;
+        }
+
+        .plus__btn--2 {
+            position: absolute;
+            right: 1rem;
+            bottom: 11.125rem;
+            
+            cursor: pointer;
         }
     }
 `;

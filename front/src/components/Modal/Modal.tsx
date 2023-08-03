@@ -4,9 +4,11 @@ import { IoIosCloseCircle } from "react-icons/io";
 import { ModalDivStyled, ModalStyled } from "./ModalStyled";
 import { useUserContext } from "../../contexts/UserContext/UserContext";
 import { EditProfile } from "./EditProfile/EditProfile";
+import { NewContact } from "./NewContact/NewContact";
 
 export const Modal = () => {
-    const { setIsOpen } = useUserContext();
+    const { setIsOpen, modalType } = useUserContext();
+
     const modalRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -41,7 +43,8 @@ export const Modal = () => {
                     ref={buttonRef}
                     onClick={() => setIsOpen(false)}
                 />
-                <EditProfile/>
+                {modalType === "editprofile"? <EditProfile/> : null}
+                {modalType === "newcontact" ? <NewContact/> : null}
             </ModalStyled>
         </ModalDivStyled>
     );
