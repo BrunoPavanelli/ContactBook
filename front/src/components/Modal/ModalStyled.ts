@@ -105,3 +105,66 @@ export const EditProfileStyled = styled.div`
         }
     }
 `;
+
+export const ViewContactInfoStyled = styled.div` 
+    width: 100%;
+    height: 100%;
+
+    padding-block: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .head {
+        width: 100%;
+        height: 40%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .texts {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    .contact__infos {
+        width: 100%;
+        height: 60%;
+
+        overflow-y: auto;
+
+        padding-inline: 1rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        position: relative;
+
+        .info__div {
+            width: 100%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            border-bottom: 2px solid var(--primary-pink);
+
+            .icons {
+                display: flex;
+                align-items: center;
+                gap: 0.25rem;
+
+                .icon {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+`;

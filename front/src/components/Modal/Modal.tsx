@@ -5,6 +5,7 @@ import { ModalDivStyled, ModalStyled } from "./ModalStyled";
 import { useUserContext } from "../../contexts/UserContext/UserContext";
 import { EditProfile } from "./EditProfile/EditProfile";
 import { NewContact } from "./NewContact/NewContact";
+import { ViewContactInfos } from "./ViewContactInfos/ViewContactInfos";
 
 export const Modal = () => {
     const { setIsOpen, modalType } = useUserContext();
@@ -45,6 +46,7 @@ export const Modal = () => {
                 />
                 {modalType === "editprofile"? <EditProfile/> : null}
                 {modalType === "newcontact" ? <NewContact/> : null}
+                {modalType === "contactview" ? <ViewContactInfos/>: null}
             </ModalStyled>
         </ModalDivStyled>
     );

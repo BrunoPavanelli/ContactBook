@@ -1,6 +1,8 @@
 export interface IContactContext {
     contacts: IContact[],
     setContacts: React.Dispatch<React.SetStateAction<IContact[]>>,
+    currentContact: IContact | null,
+    setCurrentContact: React.Dispatch<React.SetStateAction<IContact | null>>,
     retrieveUserContact: () => Promise<void>,
     registerNewContact: (formData: IContactRegisterData) => Promise<void>
 }

@@ -1,8 +1,8 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { BsTelephonePlusFill, BsPlusSquare } from "react-icons/bs";
-import { HiLockClosed } from "react-icons/hi";
 import { MdEmail } from "react-icons/md";
+import { FaUser } from "react-icons/fa";
 
 import { ButtonStyled } from "../../Form/LoginRegisterDiv/Button/ButtonStyled";
 import { Input } from "../../Form/LoginRegisterDiv/Input/Input";
@@ -11,6 +11,7 @@ import { useState } from "react";
 import { IContactRegister, IContactRegisterData } from "../../../contexts/ContactContext/@contactTypes";
 import { ZodObject, ZodString, z } from "zod";
 import { useContactContext } from "../../../contexts/ContactContext/ContactContext";
+import { useUserContext } from "../../../contexts/UserContext/UserContext";
 
 export const NewContact = () => {
     const [emailInputNumber, setEmailInputNumber] = useState<number[]>([]);
@@ -19,7 +20,7 @@ export const NewContact = () => {
     const contactRegisterSchema = z.object({
         name: z.string().min(7),
         email: z.string().email(),
-        phoneNumber: z.string().min(11).max(14),
+        phoneNumber: z.string().min(11).max(11),
     });
 
     const [schema, setSchema] = useState<
@@ -36,13 +37,14 @@ export const NewContact = () => {
             setEmailInputNumber([...emailInputNumber, newValue]);
         } else {
             setSchema(
-                schema.setKey(`${key}${newValue}`, z.string().min(11).max(14))
+                schema.setKey(`${key}${newValue}`, z.string().min(11).max(11))
             );
             setphoneInputNumber([...phoneInputNumber, newValue]);
         }
     };
 
     const { registerNewContact } = useContactContext();
+    const { setIsOpen } = useUserContext();
 
     const {
         register,
@@ -76,6 +78,7 @@ export const NewContact = () => {
         };
 
         registerNewContact(formData);
+        setIsOpen(false);
     };
 
     return (
@@ -93,7 +96,7 @@ export const NewContact = () => {
                 <Input
                     placeholder="Contact Name"
                     type="text"
-                    children={<MdEmail />}
+                    children={<FaUser />}
                     register={register("name")}
                     errors={errors.name?.message}
                 />
@@ -107,7 +110,7 @@ export const NewContact = () => {
                 <Input
                     placeholder="Phone Number"
                     type="text"
-                    children={<HiLockClosed />}
+                    children={<BsTelephonePlusFill />}
                     register={register("phoneNumber")}
                     errors={errors.phoneNumber?.message}
                 />
@@ -126,7 +129,7 @@ export const NewContact = () => {
                         key={number}
                         placeholder="Phone Number"
                         type="text"
-                        children={<HiLockClosed />}
+                        children={<BsTelephonePlusFill />}
                         register={register(`phoneNumber${number}`)}
                         errors={errors[`phoneNumber${number}`]?.message}
                     />

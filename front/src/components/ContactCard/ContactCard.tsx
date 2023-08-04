@@ -3,13 +3,15 @@ import { CgDetailsMore } from "react-icons/cg";
 import { ContactCardStyled } from "./ContactCardStyled";
 import { useUserContext } from "../../contexts/UserContext/UserContext";
 import { IContact } from "../../contexts/ContactContext/@contactTypes";
+import { useContactContext } from "../../contexts/ContactContext/ContactContext";
 
 interface IContactCardProps {
     contact: IContact
 }
 
 export const ContactCard = ({contact}: IContactCardProps) => {
-    const { setIsOpen } = useUserContext();
+    const { setIsOpen, setModalType } = useUserContext();
+    const { setCurrentContact } = useContactContext();
 
     const editStringRepresentation = (string: string): string => {
         if (string.length > 19) {
@@ -25,7 +27,7 @@ export const ContactCard = ({contact}: IContactCardProps) => {
 
     return (
         <ContactCardStyled>
-            <div className="more__infos" onClick={() => setIsOpen(true)}>
+            <div className="more__infos" onClick={() => {setIsOpen(true); setModalType("contactview"); setCurrentContact(contact);}}>
                 <CgDetailsMore className="pink__text" size={30} />
                 <p className="pink__text">View all infos</p>
             </div>

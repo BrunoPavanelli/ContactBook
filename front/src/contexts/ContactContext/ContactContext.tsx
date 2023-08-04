@@ -8,6 +8,7 @@ export const ContactContext = createContext<IContactContext>({} as IContactConte
 
 export const ContactProvider = ({children}: IChildren) => {
     const [contacts, setContacts] = useState<IContact[]>([]);
+    const [currentContact, setCurrentContact] = useState<IContact | null>(null);
 
     const retrieveUserContact = async () => {
         const token = localStorage.getItem("@ContactBook:Token");
@@ -45,6 +46,8 @@ export const ContactProvider = ({children}: IChildren) => {
         <ContactContext.Provider value={{
             contacts,
             setContacts,
+            currentContact,
+            setCurrentContact,
             retrieveUserContact,
             registerNewContact
         }}>
