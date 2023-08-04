@@ -91,7 +91,7 @@ export const EditProfileStyled = styled.div`
         .plus__btn--1 {
             position: absolute;
             right: 1rem;
-            bottom: 14.25rem;
+            bottom: 11.25rem;
 
             cursor: pointer;
         }
@@ -99,7 +99,7 @@ export const EditProfileStyled = styled.div`
         .plus__btn--2 {
             position: absolute;
             right: 1rem;
-            bottom: 11.125rem;
+            bottom: 8.125rem;
             
             cursor: pointer;
         }

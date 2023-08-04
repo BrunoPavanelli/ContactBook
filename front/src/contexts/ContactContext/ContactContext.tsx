@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 
 import { IChildren } from "../../@types/@globalTypes";
-import { IContact, IContactContext } from "./@contactContext";
+import { IContact, IContactContext, IContactRegisterData } from "./@contactContext";
 import { api } from "../../service/api";
 
 export const ContactContext = createContext<IContactContext>({} as IContactContext);
@@ -25,11 +25,28 @@ export const ContactProvider = ({children}: IChildren) => {
         }
     };
 
+    const registerNewContact = async (formData: IContactRegisterData) => {
+        const token = localStorage.getItem("@ContactBook:Token");
+
+        try {
+            const { data } = await api.post<IContact>("/contact", formData ,{
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            setContacts([...contacts, data]);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <ContactContext.Provider value={{
             contacts,
             setContacts,
-            retrieveUserContact
+            retrieveUserContact,
+            registerNewContact
         }}>
             {children}
         </ContactContext.Provider>

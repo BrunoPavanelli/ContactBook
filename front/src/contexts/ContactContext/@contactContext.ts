@@ -1,7 +1,8 @@
 export interface IContactContext {
     contacts: IContact[],
     setContacts: React.Dispatch<React.SetStateAction<IContact[]>>,
-    retrieveUserContact: () => Promise<void>
+    retrieveUserContact: () => Promise<void>,
+    registerNewContact: (formData: IContactRegisterData) => Promise<void>
 }
 
 export interface IPhoneNumber {
@@ -20,4 +21,15 @@ export interface IContact {
     userId: string,
     phoneNumbers: IPhoneNumber[],
     emails: IEmail[],
+}
+
+export interface IContactRegister {
+    name: string,
+    [key: string]: string
+}
+
+export interface IContactRegisterData {
+    name: string,
+    phoneNumbers: string[],
+    emails: string[]  
 }
