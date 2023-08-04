@@ -7,9 +7,16 @@ import { UserDashStyled } from "./UserDashStyled";
 import { ContactCard } from "../../components/ContactCard/ContactCard";
 import { Modal } from "../../components/Modal/Modal";
 import { useUserContext } from "../../contexts/UserContext/UserContext";
+import { useContactContext } from "../../contexts/ContactContext/ContactContext";
+import { useEffect } from "react";
 
 export const UserDash = () => {
     const { isOpen, setIsOpen, setModalType, userLogout } = useUserContext();
+    const { contacts, retrieveUserContact } = useContactContext();
+
+    useEffect(() => {
+        retrieveUserContact();
+    }, []);
 
     return (
         <UserDashStyled>
@@ -27,19 +34,7 @@ export const UserDash = () => {
                     </div>
                 </div>
                 <ul>
-                    <ContactCard/>
-                    <ContactCard/>
-                    <ContactCard/>
-                    <ContactCard/>
-                    <ContactCard/>
-                    <ContactCard/>
-                    <ContactCard/>
-                    <ContactCard/>
-                    <ContactCard/>
-                    <ContactCard/>
-                    <ContactCard/>
-                    <ContactCard/>
-                    
+                    {contacts.map(contact => <ContactCard key={contact.id} contact={contact}/>)}
                 </ul>
             </main>
             
