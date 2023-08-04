@@ -2,7 +2,7 @@ import { CgDetailsMore } from "react-icons/cg";
 
 import { ContactCardStyled } from "./ContactCardStyled";
 import { useUserContext } from "../../contexts/UserContext/UserContext";
-import { IContact } from "../../contexts/ContactContext/@contactContext";
+import { IContact } from "../../contexts/ContactContext/@contactTypes";
 
 interface IContactCardProps {
     contact: IContact

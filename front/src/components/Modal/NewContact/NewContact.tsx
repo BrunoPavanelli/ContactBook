@@ -4,14 +4,12 @@ import { BsTelephonePlusFill, BsPlusSquare } from "react-icons/bs";
 import { HiLockClosed } from "react-icons/hi";
 import { MdEmail } from "react-icons/md";
 
-import { useUserContext } from "../../../contexts/UserContext/UserContext";
-import { registerSchema } from "../../../pages/Register/validator";
 import { ButtonStyled } from "../../Form/LoginRegisterDiv/Button/ButtonStyled";
 import { Input } from "../../Form/LoginRegisterDiv/Input/Input";
 import { EditProfileStyled } from "../ModalStyled";
 import { useState } from "react";
-import { IContactRegister, IContactRegisterData } from "../../../contexts/ContactContext/@contactContext";
-import { ZodObject, ZodString, number, z } from "zod";
+import { IContactRegister, IContactRegisterData } from "../../../contexts/ContactContext/@contactTypes";
+import { ZodObject, ZodString, z } from "zod";
 import { useContactContext } from "../../../contexts/ContactContext/ContactContext";
 
 export const NewContact = () => {

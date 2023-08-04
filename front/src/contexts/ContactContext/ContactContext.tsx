@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 
 import { IChildren } from "../../@types/@globalTypes";
-import { IContact, IContactContext, IContactRegisterData } from "./@contactContext";
+import { IContact, IContactContext, IContactRegisterData } from "./@contactTypes";
 import { api } from "../../service/api";
 
 export const ContactContext = createContext<IContactContext>({} as IContactContext);

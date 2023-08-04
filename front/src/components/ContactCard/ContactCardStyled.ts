@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const ContactCardStyled = styled.li`
-    width: 225px;
-    height: max-content;
+    min-width: 225px;
+    max-height: 180px;
 
     padding: 2rem;
 
@@ -11,6 +11,7 @@ export const ContactCardStyled = styled.li`
     background-color: var(--purple-primary);
 
     .more__infos {
+
         display: flex;
         align-items: center;
         gap: 0.25rem;

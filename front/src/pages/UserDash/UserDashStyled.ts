@@ -49,7 +49,6 @@ export const UserDashStyled = styled.div`
             overflow-y: auto;
 
             display: flex;
-            justify-content: space-between;
             flex-wrap: wrap;
             gap: 1rem;
 
@@ -57,7 +56,7 @@ export const UserDashStyled = styled.div`
         }
     }
 
-    @media (max-width: 905px) {
+    @media (max-width: 925px) {
         main {
             .operation__bar {
                 justify-content: space-between;
