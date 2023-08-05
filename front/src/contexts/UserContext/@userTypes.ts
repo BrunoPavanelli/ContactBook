@@ -6,6 +6,8 @@ export interface IUserContext {
     userLogin: (loginData: ILoginData) => Promise<void>;
     userRegister: (registerData: IRegisterData) => Promise<void>;
     userLogout: () => void;
+    userUpdate: (data: IUpdateData) => Promise<void>;
+    userDelete: () => Promise<void>
 }
 
 export interface ILoginData {
@@ -19,5 +21,13 @@ export interface IRegisterData extends ILoginData {
 
 export interface IDecodedToken {
     email: string;
-    id: string;
+    sub: string;
+    exp: bigint;
+    iat: bigint; 
+}
+
+export interface IUpdateData {
+    email?: string;
+    password?: string;
+    name?: string;
 }

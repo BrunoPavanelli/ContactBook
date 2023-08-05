@@ -8,9 +8,11 @@ import {
     IDecodedToken,
     ILoginData,
     IRegisterData,
+    IUpdateData,
     IUserContext,
 } from "./@userTypes";
 import { api } from "../../service/api";
+import jwtDecode from "jwt-decode";
 
 export const UserContext = createContext<IUserContext>({} as IUserContext);
 
@@ -34,7 +36,7 @@ export const UserProvider = ({ children }: IChildren) => {
             const { data } = await api.post("/auth", loginData);
 
             const decodedToken: IDecodedToken = jwt_decode(data.token);
-            retrieveUserData(decodedToken.id, data.token);
+            retrieveUserData(decodedToken.sub, data.token);
 
             localStorage.setItem("@ContactBook:Token", data.token);
             navigate("/dashboard");
@@ -64,6 +66,33 @@ export const UserProvider = ({ children }: IChildren) => {
         toast.success("Godbye!");
     };
 
+    const userDelete = async () => {
+        const token = localStorage.getItem("@ContactBook:Token");
+        const decodedToken: IDecodedToken = jwtDecode(token!);
+
+
+    };
+
+    const userUpdate = async (updateData: IUpdateData) => {
+        const token = localStorage.getItem("@ContactBook:Token");
+        const decodedToken: IDecodedToken = jwtDecode(token!);
+        const userId: string = decodedToken.sub;
+
+        try {
+            const { data } = await api.patch(`/users/${userId}`, updateData, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            toast.success("Update infos with Succes!");
+            setUser(data);
+            setIsOpen(false);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     return (
         <UserContext.Provider
             value={{
@@ -74,6 +103,8 @@ export const UserProvider = ({ children }: IChildren) => {
                 userLogin,
                 userRegister,
                 userLogout,
+                userUpdate,
+                userDelete,
             }}
         >
             {children}

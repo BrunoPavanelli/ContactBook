@@ -5,7 +5,7 @@ import { FaUser } from "react-icons/fa";
 import { HiLockClosed } from "react-icons/hi";
 import { MdEmail } from "react-icons/md";
 
-import { IRegisterData } from "../../../contexts/UserContext/@userTypes";
+import { IUpdateData } from "../../../contexts/UserContext/@userTypes";
 import { useUserContext } from "../../../contexts/UserContext/UserContext";
 import { registerSchema } from "../../../pages/Register/validator";
 import { ButtonStyled } from "../../Form/LoginRegisterDiv/Button/ButtonStyled";
@@ -13,18 +13,18 @@ import { Input } from "../../Form/LoginRegisterDiv/Input/Input";
 import { EditProfileStyled } from "../ModalStyled";
 
 export const EditProfile = () => {
-    const { userRegister } = useUserContext();
+    const { userDelete, userUpdate } = useUserContext();
 
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<IRegisterData>({
+    } = useForm<IUpdateData>({
         resolver: zodResolver(registerSchema),
     });
 
-    const submit: SubmitHandler<IRegisterData> = async (data) => {
-        userRegister(data);
+    const submit: SubmitHandler<IUpdateData> = async (data) => {
+        userUpdate(data);
     };
 
     return (
@@ -38,7 +38,7 @@ export const EditProfile = () => {
                     </p>
                 </div>
             </div>
-            <form>
+            <form onSubmit={handleSubmit(submit)}>
                 <Input
                     placeholder="Username"
                     type="text"
