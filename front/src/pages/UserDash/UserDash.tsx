@@ -11,7 +11,7 @@ import { useContactContext } from "../../contexts/ContactContext/ContactContext"
 import { useEffect } from "react";
 
 export const UserDash = () => {
-    const { isOpen, setIsOpen, setModalType, userLogout } = useUserContext();
+    const { user, isOpen, setIsOpen, setModalType, userLogout } = useUserContext();
     const { contacts, retrieveUserContact } = useContactContext();
 
     useEffect(() => {
@@ -22,6 +22,11 @@ export const UserDash = () => {
         <UserDashStyled>
             {isOpen ? <Modal/> : null}
             <Header children={<BiLogOutCircle className="errors__text logout__btn" onClick={() => userLogout()} size={35}/>}/>
+            <div className="sub__header">
+                <div className="container__page"> 
+                    <p className="fw__700 fs__20">{user?.name}'s Dashboard</p>
+                </div>
+            </div>
             <main className="container__page">
                 <div className="operation__bar">
                     <div className="operation__div" onClick={() => {setIsOpen(true); setModalType("newcontact");}}>
@@ -34,7 +39,11 @@ export const UserDash = () => {
                     </div>
                 </div>
                 <ul>
-                    {contacts.map(contact => <ContactCard key={contact.id} contact={contact}/>)}
+                    {
+                        contacts.length === 0 
+                        ? <p className="fw__700 fs__20"> There's any Contact Yet!</p>
+                        : contacts.map(contact => <ContactCard key={contact.id} contact={contact}/>)
+                    }
                 </ul>
             </main>
             

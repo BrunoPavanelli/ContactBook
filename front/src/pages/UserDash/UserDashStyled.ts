@@ -5,6 +5,21 @@ export const UserDashStyled = styled.div`
     max-height: max-content;
     width: 100%;
 
+    .sub__header {
+        height: 50px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: var(--primary-yellow-opacity);
+
+        div {
+            display: flex;
+            align-items: center;
+        }
+    }
+
     .logout__btn {
         cursor: pointer;
     }

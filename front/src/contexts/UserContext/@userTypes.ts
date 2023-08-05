@@ -1,4 +1,5 @@
 export interface IUserContext {
+    user: IUser | null;
     isOpen: boolean;
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
     modalType: string;
@@ -30,4 +31,10 @@ export interface IUpdateData {
     email?: string;
     password?: string;
     name?: string;
+}
+
+export interface IUser {
+    email: string;
+    id: string;
+    name: string;
 }
