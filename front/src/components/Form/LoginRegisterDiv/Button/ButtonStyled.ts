@@ -1,10 +1,14 @@
 import { styled } from "styled-components";
 
-export const ButtonStyled = styled.button`
+interface IButtonProps {
+    type?: string
+}
+
+export const ButtonStyled = styled.button<IButtonProps>`
     width: 100%;
     min-height: 50px;
-    
-    background-color: var(--primary-pink);
+
+    background-color: ${props => props.type === "delete" ? "rgba(	252, 3, 93, 0.4)" : "#B08BAC"};
     color: var(--primary-yellow);
 
     font-size: var(--fs-16);

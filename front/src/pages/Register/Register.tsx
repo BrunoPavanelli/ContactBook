@@ -72,7 +72,7 @@ export const Register = () => {
                             Already have an account?
                         </p>
                         <Link to="/" className="pink__text fw__700 ff__Sulphur">
-                            SINGIN
+                            SIGN-IN
                         </Link>
                     </div>
                 </form>

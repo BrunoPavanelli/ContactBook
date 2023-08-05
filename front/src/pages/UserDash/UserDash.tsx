@@ -21,7 +21,7 @@ export const UserDash = () => {
     return (
         <UserDashStyled>
             {isOpen ? <Modal/> : null}
-            <Header children={<BiLogOutCircle className="yellow__text logout__btn" onClick={() => userLogout()} size={35}/>}/>
+            <Header children={<BiLogOutCircle className="errors__text logout__btn" onClick={() => userLogout()} size={35}/>}/>
             <main className="container__page">
                 <div className="operation__bar">
                     <div className="operation__div" onClick={() => {setIsOpen(true); setModalType("newcontact");}}>

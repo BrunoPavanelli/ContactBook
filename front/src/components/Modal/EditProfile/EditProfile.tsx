@@ -62,6 +62,7 @@ export const EditProfile = () => {
                 />
                 <ButtonStyled className="btn">Edit Infos</ButtonStyled>
             </form>
+            <ButtonStyled type="delete">DELETE</ButtonStyled>
         </EditProfileStyled>
     );
 };

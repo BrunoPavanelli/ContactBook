@@ -5,10 +5,12 @@ import { ContactsInfoCard } from "./ContactInfosCard";
 import { useContactContext } from "../../../contexts/ContactContext/ContactContext";
 import { ButtonStyled } from "../../Form/LoginRegisterDiv/Button/ButtonStyled";
 import { ContactInfosCardForEmptyPhonesOrEmails } from "./ContactInfosCardForEmptyPhonesOrEmails";
+import { useUserContext } from "../../../contexts/UserContext/UserContext";
 
 
 export const ViewContactInfos = () => {
-    const { currentContact, deleteAllPhonesOrEmailsForContact } = useContactContext();
+    const { currentContact, deleteAllPhonesOrEmailsForContact, deleteAllPhonesAndEmailsForContact, deleteContact } = useContactContext();
+    const { setIsOpen } = useUserContext();
 
     const phones = currentContact!.phoneNumbers;
     const emails = currentContact!.emails;
@@ -35,9 +37,10 @@ export const ViewContactInfos = () => {
             <div className="buttons">
                 <ButtonStyled onClick={() => deleteAllPhonesOrEmailsForContact(currentContact!.id, "phone")}>Clear Phones</ButtonStyled>
                 <ButtonStyled onClick={() => deleteAllPhonesOrEmailsForContact(currentContact!.id, "email")}>Clear Emails</ButtonStyled>
-                <ButtonStyled>Clear All</ButtonStyled>
+                <ButtonStyled onClick={() => deleteAllPhonesAndEmailsForContact(currentContact!.id)}>Clear All</ButtonStyled>
 
             </div>
+            <ButtonStyled type="delete" onClick={() => {deleteContact(currentContact!.id); setIsOpen(false);}}>DELETE</ButtonStyled>
         </ViewContactInfoStyled>
     );
 };

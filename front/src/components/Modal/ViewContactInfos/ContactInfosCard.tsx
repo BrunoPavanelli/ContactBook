@@ -20,7 +20,7 @@ interface IContactsInfoCardProps {
 
 export const ContactsInfoCard = ({id, info, type, count, contactId}: IContactsInfoCardProps) => {
     const [openInput, setOpenInput] = useState(false);
-    const { deletePhoneNumberOrEmail, updatePhoneOrEmail } = useContactContext();
+    const { deletePhoneNumberOrEmail, updatePhoneOrEmail, retrieveUserContact } = useContactContext();
 
     const reformatPhoneString = (info: string) => {
         const infoSplited = info.split("");
@@ -38,6 +38,11 @@ export const ContactsInfoCard = ({id, info, type, count, contactId}: IContactsIn
         email: z.string().email(),
     });
 
+    const onClose = () => {
+        setOpenInput(false);
+        retrieveUserContact();
+    };
+    
     const { 
         register, 
         handleSubmit, 
@@ -52,6 +57,7 @@ export const ContactsInfoCard = ({id, info, type, count, contactId}: IContactsIn
         type === "email"
         ? submitEmailRef.current!.click()
         : submitPhoneRef.current!.click();
+        setOpenInput(false);
     };
 
     const submit: SubmitHandler<IInfolUpdate> = (data) => {
@@ -91,11 +97,11 @@ export const ContactsInfoCard = ({id, info, type, count, contactId}: IContactsIn
                         openInput
                         ?   <>
                                 <BiSolidSend className="pink__text icon" onClick={() => clickSubmitButton()}/>
-                                <IoMdClose className="pink__text icon" onClick={() => setOpenInput(false)}/>
+                                <IoMdClose className="pink__text icon" onClick={() => onClose()}/>
                             </>
                     :  <AiFillEdit className="pink__text icon" onClick={() => setOpenInput(true)}/>
                     }
-                    <MdDelete className="errors__text icon" onClick={() => deletePhoneNumberOrEmail(id, type)}/>
+                    <MdDelete className="errors__text icon" onClick={() => deletePhoneNumberOrEmail(id, type, contactId)}/>
                 </div>
             </li>
             { openInput 

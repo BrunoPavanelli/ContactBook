@@ -156,11 +156,13 @@ export class ContactsPrismaRepository implements ConstactsRepository {
       include: {
         phoneNumbers: {
           select: {
+            id: true,
             phoneNumber: true,
           },
         },
         emails: {
           select: {
+            id: true,
             email: true,
           },
         },

@@ -19,7 +19,8 @@ export const ModalStyled = styled.div`
 
     margin-top: 10rem;
 
-    padding: 1rem;
+    padding-block: 1rem;
+    padding-inline: 2rem;
 
     position: relative;
 
@@ -76,8 +77,6 @@ export const EditProfileStyled = styled.div`
         height: 60%;
 
         overflow-y: auto;
-
-        padding-inline: 1rem;
 
         display: flex;
         flex-direction: column;
@@ -139,8 +138,6 @@ export const ViewContactInfoStyled = styled.div`
 
         overflow-y: auto;
 
-        padding-inline: 1rem;
-
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
@@ -201,5 +198,7 @@ export const ViewContactInfoStyled = styled.div`
         width: 100%;
         display: flex;
         gap: 1rem;
+
+        margin-block: 1rem;
     }
 `;

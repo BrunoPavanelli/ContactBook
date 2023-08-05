@@ -44,7 +44,40 @@ export const ContactProvider = ({children}: IChildren) => {
         }
     };
 
-    const updatePhoneOrEmail = async (newInfo: IInfolUpdate ,contactId: string, id: string, type: "email" | "phone") => {
+    const registerPhoneOrEmailForContact = async (info: IInfolUpdate, contactId: string, type: "email" | "phone") => {
+        const token = localStorage.getItem("@ContactBook:Token");
+        try {
+            const {data} = await api.post(`/contact/${type}/${contactId}`, info, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            let newCurrentContact = null;
+
+            if (type === "email") {
+                newCurrentContact = {
+                    ...currentContact!,
+                    emails: [data]
+                };
+            } else {
+                newCurrentContact = {
+                    ...currentContact!,
+                    phoneNumbers: [data]
+                };
+            }
+
+            const filterContacts = contacts.filter(contact => contact.id !== contactId);
+
+            toast.success("Success!");
+            setCurrentContact(newCurrentContact);
+            setContacts([...filterContacts, newCurrentContact]);
+        } catch (error) {
+            console.log(error);
+        }        
+    };
+
+    const updatePhoneOrEmail = async (newInfo: IInfolUpdate, contactId: string, id: string, type: "email" | "phone") => {
         const token = localStorage.getItem("@ContactBook:Token");
         try {
             const {data} = await api.patch(`/contact/${type}/${contactId}/${id}`, newInfo, {
@@ -52,6 +85,7 @@ export const ContactProvider = ({children}: IChildren) => {
                     Authorization: `Bearer ${token}`
                 }
             });
+            console.log(data);
 
             toast.success("Success!");
             setCurrentContact(data);
@@ -84,6 +118,7 @@ export const ContactProvider = ({children}: IChildren) => {
                 };
             }
 
+
             toast.success("Success!");
             setCurrentContact(newCurrentContact);
         } catch (error) {
@@ -93,7 +128,6 @@ export const ContactProvider = ({children}: IChildren) => {
     
     const deletePhoneNumberOrEmail = async (id: string, type: "email" | "phone") => {
         const token = localStorage.getItem("@ContactBook:Token");
-
         try {
             await api.delete(`/contact/${type}/delete/${id}`, {
                 headers: {
@@ -114,6 +148,28 @@ export const ContactProvider = ({children}: IChildren) => {
                     phoneNumbers: currentContact!.phoneNumbers.filter(phone => phone.id !== id)
                 };
             }
+
+            toast.success("Success!");
+            setCurrentContact(newCurrentContact);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const deleteAllPhonesAndEmailsForContact = async (id: string) => {
+        const token = localStorage.getItem("@ContactBook:Token");
+        try {
+            await api.delete(`/contact/drainout/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            const newCurrentContact = {
+                ...currentContact!,
+                emails: [],
+                phoneNumbers: []
+            };
 
             toast.success("Success!");
             setCurrentContact(newCurrentContact);
@@ -147,9 +203,11 @@ export const ContactProvider = ({children}: IChildren) => {
             setCurrentContact,
             retrieveUserContact,
             registerNewContact,
+            registerPhoneOrEmailForContact,
             updatePhoneOrEmail,
             deletePhoneNumberOrEmail,
             deleteAllPhonesOrEmailsForContact,
+            deleteAllPhonesAndEmailsForContact,
             deleteContact,
         }}>
             {children}

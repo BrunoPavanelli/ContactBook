@@ -16,7 +16,7 @@ export const ContactInfosCardForEmptyPhonesOrEmails = ({
     type,
     contactId,
 }: IContactInfosCardForEmptyPhonesOrEmailsProps) => {
-    const { } = useContactContext();
+    const { registerPhoneOrEmailForContact } = useContactContext();
     const submitPhoneRef = useRef<HTMLButtonElement>(null);
     const submitEmailRef = useRef<HTMLButtonElement>(null);
 
@@ -42,7 +42,7 @@ export const ContactInfosCardForEmptyPhonesOrEmails = ({
     };
 
     const submit: SubmitHandler<IInfolUpdate> = (data) => {
-
+        registerPhoneOrEmailForContact(data, contactId, type);
     };
 
     return (

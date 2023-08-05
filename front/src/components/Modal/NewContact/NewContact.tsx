@@ -135,7 +135,7 @@ export const NewContact = () => {
                     />
                 ))}
 
-                <ButtonStyled className="btn">Edit Infos</ButtonStyled>
+                <ButtonStyled className="btn">Create Contact</ButtonStyled>
                 <BsPlusSquare
                     className="yellow__text plus__btn--1"
                     size={20}

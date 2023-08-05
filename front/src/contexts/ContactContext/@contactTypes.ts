@@ -5,9 +5,11 @@ export interface IContactContext {
     setCurrentContact: React.Dispatch<React.SetStateAction<IContact | null>>,
     retrieveUserContact: () => Promise<void>,
     registerNewContact: (formData: IContactRegisterData) => Promise<void>,
+    registerPhoneOrEmailForContact: (info: IInfolUpdate, contactId: string, type: "email" | "phone") => Promise<void>
     updatePhoneOrEmail: (newInfo: IInfolUpdate, contactId: string, id: string, type: "email" | "phone") => Promise<void>,
-    deletePhoneNumberOrEmail: (id: string, type: "email" | "phone") => Promise<void>,
-    deleteAllPhonesOrEmailsForContact: (id: string, type: "email" | "phone") => Promise<void>
+    deletePhoneNumberOrEmail: (id: string, type: "email" | "phone", contactId: string) => Promise<void>,
+    deleteAllPhonesOrEmailsForContact: (id: string, type: "email" | "phone") => Promise<void>,
+    deleteAllPhonesAndEmailsForContact: (id: string) => Promise<void>
     deleteContact: (id: string) => Promise<void>,
 }
 

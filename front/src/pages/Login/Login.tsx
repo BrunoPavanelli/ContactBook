@@ -65,7 +65,7 @@ export const Login = () => {
                             to="/register"
                             className="pink__text fw__700 ff__Sulphur"
                         >
-                            SINGUP
+                            SIGN-UP
                         </Link>
                     </div>
                 </form>

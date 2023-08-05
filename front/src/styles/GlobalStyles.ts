@@ -36,7 +36,7 @@ export const GlobalStyle = createGlobalStyle`
         --primary-yellow: #F5D2BB;
         --primary-pink: #B08BAC;
         --primary-yellow-opacity: rgb(233, 238, 204, 0.6);
-        --error-form: rgba(	252, 3, 93, 0.8);
+        --error-form: rgba(	252, 3, 93, 0.6);
 
         /* Font-Family */
         --ff-Kanit: 'Kanit', sans-serif;
