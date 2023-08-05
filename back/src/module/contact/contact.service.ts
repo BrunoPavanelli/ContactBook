@@ -1,5 +1,9 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { CreateContactDto } from "./dto/create-contact.dto";
+import {
+  CreateContactDto,
+  CreateEmailDto,
+  CreatePhoneNumberDto,
+} from "./dto/create-contact.dto";
 import { UpdatePhoneNumberDto, UpdateEmailDto } from "./dto/update-contact.dto";
 import { ConstactsRepository } from "./repositories/contacts.repository";
 
@@ -9,6 +13,14 @@ export class ContactService {
 
   async create(createContactDto: CreateContactDto, userId: string) {
     return await this.contactsRepository.create(createContactDto, userId);
+  }
+
+  async createPhoneNumber(data: CreatePhoneNumberDto, contactId: string) {
+    return await this.contactsRepository.createPhoneNumber(data, contactId);
+  }
+
+  async createEmail(data: CreateEmailDto, contactId: string) {
+    return await this.contactsRepository.createEmail(data, contactId);
   }
 
   async findAll() {

@@ -1,5 +1,9 @@
 import { Email, PhoneNumber } from "@prisma/client";
-import { CreateContactDto } from "../dto/create-contact.dto";
+import {
+  CreateContactDto,
+  CreateEmailDto,
+  CreatePhoneNumberDto,
+} from "../dto/create-contact.dto";
 import {
   UpdatePhoneNumberDto,
   UpdateEmailDto,
@@ -15,6 +19,11 @@ export abstract class ConstactsRepository {
     phoneNumberId: string,
   ): Promise<PhoneNumber | null | undefined>;
   abstract findOneEmail(emailId: string): Promise<Email | null | undefined>;
+  abstract createPhoneNumber(
+    data: CreatePhoneNumberDto,
+    contactId: string,
+  ): Promise<PhoneNumber>;
+  abstract createEmail(data: CreateEmailDto, contactId: string): Promise<Email>;
   abstract updatePhoneNumber(
     contactId: string,
     phoneNumberId: string,

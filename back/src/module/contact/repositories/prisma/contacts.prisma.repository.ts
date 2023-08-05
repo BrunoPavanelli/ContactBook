@@ -1,6 +1,10 @@
 import { Injectable } from "@nestjs/common";
 import { ConstactsRepository } from "../contacts.repository";
-import { CreateContactDto } from "../../dto/create-contact.dto";
+import {
+  CreateContactDto,
+  CreateEmailDto,
+  CreatePhoneNumberDto,
+} from "../../dto/create-contact.dto";
 import {
   UpdateEmailDto,
   UpdatePhoneNumberDto,
@@ -70,6 +74,33 @@ export class ContactsPrismaRepository implements ConstactsRepository {
     });
 
     return findContact;
+  }
+
+  async createPhoneNumber(
+    data: CreatePhoneNumberDto,
+    contactId: string,
+  ): Promise<PhoneNumber> {
+    const newPhoneNumber = new PhoneNumber();
+    Object.assign(newPhoneNumber, {
+      phoneNumber: data.phoneNumber,
+      contactId: contactId,
+    });
+
+    return await this.prisma.phoneNumber.create({
+      data: { ...newPhoneNumber },
+    });
+  }
+
+  async createEmail(data: CreateEmailDto, contactId: string): Promise<Email> {
+    const newEmail = new Email();
+    Object.assign(newEmail, {
+      email: data.email,
+      contactId: contactId,
+    });
+
+    return await this.prisma.email.create({
+      data: { ...newEmail },
+    });
   }
 
   async findAll(): Promise<Contact[]> {

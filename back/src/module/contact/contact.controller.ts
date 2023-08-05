@@ -11,7 +11,11 @@ import {
   UseGuards,
 } from "@nestjs/common";
 import { ContactService } from "./contact.service";
-import { CreateContactDto } from "./dto/create-contact.dto";
+import {
+  CreateContactDto,
+  CreateEmailDto,
+  CreatePhoneNumberDto,
+} from "./dto/create-contact.dto";
 import { UpdateEmailDto, UpdatePhoneNumberDto } from "./dto/update-contact.dto";
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 
@@ -24,6 +28,24 @@ export class ContactController {
   async create(@Body() createContactDto: CreateContactDto, @Request() req) {
     const userId = req.user.id;
     return this.contactService.create(createContactDto, userId);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post("/phone/:contactId")
+  async createPhoneNumber(
+    @Body() data: CreatePhoneNumberDto,
+    @Param("contactId", ParseUUIDPipe) contactId: string,
+  ) {
+    return this.contactService.createPhoneNumber(data, contactId);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post("/email/:contactId")
+  async createEmail(
+    @Body() data: CreateEmailDto,
+    @Param("contactId", ParseUUIDPipe) contactId: string,
+  ) {
+    return this.contactService.createEmail(data, contactId);
   }
 
   @UseGuards(JwtAuthGuard)
