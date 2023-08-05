@@ -23,8 +23,6 @@ export const ContactCard = ({contact}: IContactCardProps) => {
         return string;
     };
 
-    editStringRepresentation(contact.emails[0].email);
-
     return (
         <ContactCardStyled>
             <div className="more__infos" onClick={() => {setIsOpen(true); setModalType("contactview"); setCurrentContact(contact);}}>
@@ -33,8 +31,8 @@ export const ContactCard = ({contact}: IContactCardProps) => {
             </div>
             <div className="contact__infos">
                 <p className="yellow__text">{editStringRepresentation(contact.name)}</p>
-                <p className="yellow__text">{contact.phoneNumbers[0].phoneNumber}</p>
-                <p className="yellow__text">{editStringRepresentation(contact.emails[0].email)}</p>
+                <p className="yellow__text">{contact.phoneNumbers.length > 0 && contact.phoneNumbers[0].phoneNumber}</p>
+                <p className="yellow__text">{contact.emails.length > 0 && editStringRepresentation(contact.emails[0].email)}</p>
             </div>
         </ContactCardStyled>
     );

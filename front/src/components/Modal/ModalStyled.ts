@@ -156,15 +156,50 @@ export const ViewContactInfoStyled = styled.div`
             
             border-bottom: 2px solid var(--primary-pink);
 
+            .card__info {
+                width: 100%;
+
+                display: flex;
+                align-items: center;
+                gap: 0.25rem;
+            }
+
+            .edit__phone__email {
+                width: 80%;
+                height: 100%;
+
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                background-color: transparent;
+                input {
+                    width: 100%;
+                    background-color: transparent;
+
+                    color: var(--primary-yellow)
+                }
+
+                button {
+                    display: none;
+                }
+            }
+
             .icons {
                 display: flex;
                 align-items: center;
                 gap: 0.25rem;
+            }
 
-                .icon {
+            .icon {
                     cursor: pointer;
                 }
-            }
         }
+    }
+
+    .buttons {
+        width: 100%;
+        display: flex;
+        gap: 1rem;
     }
 `;

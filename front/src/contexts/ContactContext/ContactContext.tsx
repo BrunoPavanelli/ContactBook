@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 
 import { IChildren } from "../../@types/@globalTypes";
-import { IContact, IContactContext, IContactRegisterData } from "./@contactTypes";
+import { IContact, IContactContext, IContactRegisterData, IInfolUpdate } from "./@contactTypes";
 import { api } from "../../service/api";
 import { toast } from "react-toastify";
 
@@ -43,10 +43,57 @@ export const ContactProvider = ({children}: IChildren) => {
             console.log(error);
         }
     };
+
+    const updatePhoneOrEmail = async (newInfo: IInfolUpdate ,contactId: string, id: string, type: "email" | "phone") => {
+        const token = localStorage.getItem("@ContactBook:Token");
+        try {
+            const {data} = await api.patch(`/contact/${type}/${contactId}/${id}`, newInfo, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            toast.success("Success!");
+            setCurrentContact(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const deleteAllPhonesOrEmailsForContact = async (id: string, type: "email" | "phone") => {
+        const token = localStorage.getItem("@ContactBook:Token");
+
+        try {
+            await api.delete(`/contact/${type}/drainout/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            let newCurrentContact = null;
+
+            if (type === "email") {
+                newCurrentContact = {
+                    ...currentContact!,
+                    emails: []
+                };
+            } else {
+                newCurrentContact = {
+                    ...currentContact!,
+                    phoneNumbers: []
+                };
+            }
+
+            toast.success("Success!");
+            setCurrentContact(newCurrentContact);
+        } catch (error) {
+            console.log(error);
+        }         
+    };
     
     const deletePhoneNumberOrEmail = async (id: string, type: "email" | "phone") => {
         const token = localStorage.getItem("@ContactBook:Token");
-        console.log(type, id);
+
         try {
             await api.delete(`/contact/${type}/delete/${id}`, {
                 headers: {
@@ -100,8 +147,10 @@ export const ContactProvider = ({children}: IChildren) => {
             setCurrentContact,
             retrieveUserContact,
             registerNewContact,
+            updatePhoneOrEmail,
+            deletePhoneNumberOrEmail,
+            deleteAllPhonesOrEmailsForContact,
             deleteContact,
-            deletePhoneNumberOrEmail
         }}>
             {children}
         </ContactContext.Provider>
