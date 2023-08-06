@@ -1,0 +1,589 @@
+_type: export
+__export_format: 4
+__export_date: 2023-08-06T01:27:06.492Z
+__export_source: insomnia.desktop.app:v2023.4.0
+resources:
+  - _id: req_751462a59ca24bca99129f483ab1698f
+    parentId: fld_41d8569502824ed9b45957bf32d4f14b
+    modified: 1690815206836
+    created: 1690765359436
+    url: "{{ _.baseURL }}/contact"
+    name: Create
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"name": "Bruno",
+        	"phoneNumbers": ["11992944250", "11975547509"],
+        	"emails": ["brunopavanellicontato@gmail.com", "brunopavanellicontato2@gmail.com"]
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.userToken }}"
+      disabled: false
+    metaSortKey: -1690765359436
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_41d8569502824ed9b45957bf32d4f14b
+    parentId: wrk_5755732acd124e48b8bf62689004530f
+    modified: 1690761430902
+    created: 1690761430902
+    name: Contacts
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1690761430903
+    _type: request_group
+  - _id: wrk_5755732acd124e48b8bf62689004530f
+    parentId: null
+    modified: 1690761143939
+    created: 1690761143939
+    name: ContactBook
+    description: ""
+    scope: design
+    _type: workspace
+  - _id: req_6fb45ceddffb4959be22bd6f20aea21b
+    parentId: fld_41d8569502824ed9b45957bf32d4f14b
+    modified: 1691254013832
+    created: 1691253892493
+    url: "{{ _.baseURL }}/contact/phone/815f7c39-37ee-4d2e-8bad-8b6e0a08b1bb"
+    name: Create PhoneNumber
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"phoneNumber": "11992944250"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.userToken }}"
+      disabled: false
+    metaSortKey: -1690764133239
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e98f8a30b6124c818e93551c11319aab
+    parentId: fld_41d8569502824ed9b45957bf32d4f14b
+    modified: 1691254259969
+    created: 1691254238517
+    url: "{{ _.baseURL }}/contact/email/815f7c39-37ee-4d2e-8bad-8b6e0a08b1bb"
+    name: Create Email
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "teste@mail.com"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.userToken }}"
+      disabled: false
+    metaSortKey: -1690763520140.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_612b7b82a4e549748d6a05c285b94a5c
+    parentId: fld_41d8569502824ed9b45957bf32d4f14b
+    modified: 1690762889094
+    created: 1690762884730
+    url: "{{ _.baseURL }}/contact/token"
+    name: FindAll By User Token
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.userToken }}"
+    metaSortKey: -1690761294347.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f1610c49a2e04926806d7f9bab77ded4
+    parentId: fld_41d8569502824ed9b45957bf32d4f14b
+    modified: 1690802712565
+    created: 1690761432127
+    url: "{{ _.baseURL }}/contact"
+    name: FindAll
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"phoneNumber": "15456944250"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.userToken }}"
+    metaSortKey: -1690761294297.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_7fbfefb9dc8a4410b0786af4b04a8e2d
+    parentId: fld_41d8569502824ed9b45957bf32d4f14b
+    modified: 1691251316192
+    created: 1690802699438
+    url: "{{ _.baseURL }}/contact/email/{{ _.contactId }}/{{ _.emailId }}"
+    name: Update Email
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"phoneNumber": "15456944250"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.userToken }}"
+    metaSortKey: -1690761259865.125
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_be802f6b1f5f45089c13b217bd86e021
+    parentId: fld_41d8569502824ed9b45957bf32d4f14b
+    modified: 1691251304832
+    created: 1690802686700
+    url: "{{ _.baseURL }}/contact/phone/{{ _.contactId }}/{{ _.phoneNumberId }}"
+    name: Update Phone Number
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"phoneNumber": "15456944250"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.userToken }}"
+    metaSortKey: -1690761225432.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5f0524aae07e47a0ae99a028b274c4ad
+    parentId: fld_41d8569502824ed9b45957bf32d4f14b
+    modified: 1690804304797
+    created: 1690803561467
+    url: " {{ _.baseURL }}/contact/{{ _.contactId }}"
+    name: Delete
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.userToken }}"
+    metaSortKey: -1690761225382.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_bd92d1bf276a41168a64e7fe135aa531
+    parentId: fld_41d8569502824ed9b45957bf32d4f14b
+    modified: 1690816040408
+    created: 1690816032700
+    url: " {{ _.baseURL }}/contact/drainout/{{ _.contactId }}"
+    name: Delete All PhoneNumbers and Emails
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.userToken }}"
+    metaSortKey: -1690761208179.0625
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_ccef92f377194f6f93ed3ebdb996f411
+    parentId: fld_41d8569502824ed9b45957bf32d4f14b
+    modified: 1690816262457
+    created: 1690816246090
+    url: " {{ _.baseURL }}/contact/phone/drainout/{{ _.contactId }}"
+    name: "Delete All PhoneNumbers "
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.userToken }}"
+    metaSortKey: -1690761199577.2188
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_1b3df01d278941a68eddaf50be40d3e2
+    parentId: fld_41d8569502824ed9b45957bf32d4f14b
+    modified: 1690816256494
+    created: 1690816251132
+    url: " {{ _.baseURL }}/contact/email/drainout/{{ _.contactId }}"
+    name: Delete All Emails
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.userToken }}"
+    metaSortKey: -1690761195276.2969
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_67dbd6c090494eea84d01f4b2cf3380f
+    parentId: fld_41d8569502824ed9b45957bf32d4f14b
+    modified: 1690815011826
+    created: 1690814892434
+    url: " {{ _.baseURL }}/contact/phone/delete/{{ _.phoneNumberId }}"
+    name: Delete PhoneNumber
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.userToken }}"
+    metaSortKey: -1690761190975.375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b8b7fb523fdc4f738c005324b7f2ce40
+    parentId: fld_41d8569502824ed9b45957bf32d4f14b
+    modified: 1690815115394
+    created: 1690815059957
+    url: " {{ _.baseURL }}/contact/email/delete/{{ _.emailId }}"
+    name: Delete Email
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.userToken }}"
+    metaSortKey: -1690761173771.6875
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5a7423c45b054fcaa2a92c69a2c5bcd4
+    parentId: fld_40adc50ef5ff41699abe1d3cc4c972ab
+    modified: 1690802539922
+    created: 1690762907042
+    url: "{{ _.baseURL }}/users"
+    name: Create
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "user1",
+        	"email": "user1@mail.com",
+        	"password": "1234"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1690762907042
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_40adc50ef5ff41699abe1d3cc4c972ab
+    parentId: wrk_5755732acd124e48b8bf62689004530f
+    modified: 1690761155556
+    created: 1690761155556
+    name: Users
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1690761155556
+    _type: request_group
+  - _id: req_9d3eed6965244bd1952ed2c43df92487
+    parentId: fld_40adc50ef5ff41699abe1d3cc4c972ab
+    modified: 1691273553124
+    created: 1690761156568
+    url: "{{ _.baseURL }}/auth"
+    name: Login
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "user1@mail.com",
+        	"password": "1234"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1690761156568
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9b9a3b386cd344ac9d1570cb3d960817
+    parentId: fld_40adc50ef5ff41699abe1d3cc4c972ab
+    modified: 1690761336930
+    created: 1690761336930
+    url: "{{ _.baseURL }}/users"
+    name: FindAll
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: ""
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1690612558767.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_de7ab2b042404f3584db96efeb9c2fdc
+    parentId: fld_40adc50ef5ff41699abe1d3cc4c972ab
+    modified: 1691273561437
+    created: 1691273511331
+    url: "{{ _.baseURL }}/users/{{ _.userId }}"
+    name: Find One
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: ""
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.userToken }}"
+    metaSortKey: -1690612558755
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_344d58ff562443d68ddc5cc689e4c317
+    parentId: fld_40adc50ef5ff41699abe1d3cc4c972ab
+    modified: 1691273499887
+    created: 1691094878064
+    url: "{{ _.baseURL }}/users/{{ _.userId }}"
+    name: Update
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "user1",
+        	"email": "user1Patch@mail.com",
+        	"password": "12345"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1690612558742.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d29fed0dd8a6447f9835523bebae9be4
+    parentId: fld_40adc50ef5ff41699abe1d3cc4c972ab
+    modified: 1691273497922
+    created: 1691273442889
+    url: "{{ _.baseURL }}/users/{{ _.userId }}"
+    name: Delete
+    description: ""
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: ""
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1690612558717.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_b3a21c70ce3210910a8bd3d1dba8487212b24418
+    parentId: wrk_5755732acd124e48b8bf62689004530f
+    modified: 1691159978397
+    created: 1690761143942
+    name: Base Environment
+    data:
+      baseURL: http://localhost:3001
+      userToken: "{% response 'body', 'req_9d3eed6965244bd1952ed2c43df92487',
+        'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+      userId: "{% response 'body', 'req_9b9a3b386cd344ac9d1570cb3d960817',
+        'b64::JFswXS5pZA==::46b', 'never', 60 %}"
+      contactId: "{% response 'body', 'req_612b7b82a4e549748d6a05c285b94a5c',
+        'b64::JFswXS5pZA==::46b', 'never', 60 %}"
+      phoneNumberId: "{% response 'body', 'req_751462a59ca24bca99129f483ab1698f',
+        'b64::JC5waG9uZU51bWJlcnNbMF0uaWQ=::46b', 'never', 60 %}"
+      emailId: "{% response 'body', 'req_751462a59ca24bca99129f483ab1698f',
+        'b64::JC5lbWFpbHNbMF0uaWQ=::46b', 'never', 60 %}"
+    dataPropertyOrder:
+      "&":
+        - baseURL
+        - userToken
+        - userId
+        - contactId
+        - phoneNumberId
+        - emailId
+    color: null
+    isPrivate: false
+    metaSortKey: 1690761143942
+    _type: environment
+  - _id: jar_b3a21c70ce3210910a8bd3d1dba8487212b24418
+    parentId: wrk_5755732acd124e48b8bf62689004530f
+    modified: 1690761143943
+    created: 1690761143943
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_564145c62a974584ae86fb8f12c5625a
+    parentId: wrk_5755732acd124e48b8bf62689004530f
+    modified: 1690802316930
+    created: 1690761143941
+    fileName: ContactBook
+    contents: ""
+    contentType: yaml
+    _type: api_spec
